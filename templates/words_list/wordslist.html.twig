@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Mes listes</h1>
+
+    {% if lists == 0 %}
+        <p>Vous n'avez pas encore de liste, ajoutez-en !</p>
+
+        <a href="{{ path('new_list') }}">Ajouter</a>
+    {% else %}
+        <p>Voici vos listes</p>
+
+        <a href="{{ path('new_list') }}">Ajouter</a>
+    {% endif %}
+
+{% endblock %}

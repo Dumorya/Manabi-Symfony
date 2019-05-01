@@ -1,11 +1,8 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Page d'accueil</h1>
+    <h1>Accueil</h1>
 
-    <nav>
-        <ul>
-            <li><a href="{{ path('homepage') }}">Accueil</a></li>
-        </ul>
-    </nav>
+    <a href="{{ path('words_list') }}">Voir mes listes</a>
+    <a href="">Lancer un quiz</a>
 {% endblock %}

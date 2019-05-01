@@ -2,12 +2,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    {#<link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />#}
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
+{{ include('default/_navbar.html.twig') }}
 
-{% block body %}{% endblock %}
+{% block body %}
+{% endblock %}
 {% block javascripts %}{% endblock %}
 </body>
 </html>

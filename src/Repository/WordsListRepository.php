@@ -19,6 +19,18 @@ class WordsListRepository extends ServiceEntityRepository
         parent::__construct($registry, WordsList::class);
     }
 
+    /**
+     * @return WordsList[]
+     */
+    public function countLists()
+    {
+        return $this->createQueryBuilder('w')
+                    ->select('count(w.id)')
+                    ->getQuery()
+                    ->getSingleScalarResult()
+            ;
+    }
+
     // /**
     //  * @return WordsList[] Returns an array of WordsList objects
     //  */
