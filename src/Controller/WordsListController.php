@@ -15,19 +15,21 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class WordsListController extends AbstractController
 {
     /**
-     * @Route("/words/list", name="words_list")
+     * @Route("/word/list", name="words_list")
      */
     public function index()
     {
         $repository = $this->getDoctrine()->getRepository(WordsList::class);
 
+        $user       = $this->container->get('security.token_storage')->getToken()->getUser();
+        $userId     = $user->getId();
+//        $userLists  = $repository->getUserLists($userId);
+
         // get the number of lists
-        $listNumber = $repository->countLists();
+        $listNumber = $repository->countUserLists($userId);
 
-        // get all the lists
-        $lists = $repository->findAll();
-
-        error_log(json_encode($lists));
+        // get all the lists of the current user
+        $lists = $repository->getUserLists($userId);
 
         return $this->render('words_list/wordslist.html.twig', [
             'controller_name' => 'WordsListController',
@@ -88,7 +90,7 @@ class WordsListController extends AbstractController
             ]);
         }
 
-        return $this->render('product/edit_list.html.twig', [
+        return $this->render('words_list/edit_list.html.twig', [
             'list' => $list,
             'form' => $form->createView(),
         ]);

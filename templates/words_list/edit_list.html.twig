@@ -10,5 +10,5 @@
 
     {{ include('words_list/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('words_list') }}">Retour</a>
+    <a href="{{ path('show_list', {'id': list.id}) }}">Retour à la liste</a>
 {% endblock %}

@@ -22,23 +22,49 @@ class WordsListRepository extends ServiceEntityRepository
     /**
      * @return WordsList[]
      */
-    public function countLists()
+    public function countUserLists($userId)
     {
         return $this->createQueryBuilder('w')
                     ->select('count(w.id)')
+                    ->andWhere('w.userId = :user_id')
+                    ->setParameter('user_id', $userId)
                     ->getQuery()
                     ->getSingleScalarResult()
             ;
     }
 
-//    public function getUserLists()
-//    {
-//        return $this->createQueryBuilder('u')
-//                    ->select('count(u.id)')
-//                    ->getQuery()
-//                    ->getSingleScalarResult()
-//            ;
-//    }
+    public function getUserLists($userId)
+    {
+        return $this->createQueryBuilder('u')
+                    ->andWhere('u.userId = :user_id')
+                    ->setParameter('user_id', $userId)
+                    ->getQuery()
+                    ->getResult()
+            ;
+
+//        $entityManager = $this->getEntityManager();
+//
+//        $query = $entityManager->createQuery(
+//            'SELECT w
+//        FROM App\Entity\WordsList w
+//        WHERE w.userId = :user_id'
+//        )->setParameter('user_id', $userId);
+//
+//        // returns an array of Product objects
+//        return $query->execute();
+
+//        $conn = $this->getEntityManager()->getConnection();
+//
+//        $sql = '
+//        SELECT * FROM words_list w
+//        WHERE w.user_id_id = :user_id
+//        ';
+//        $stmt = $conn->prepare($sql);
+//        $stmt->execute(['user_id' => $userId]);
+//
+//        // returns an array of arrays (i.e. a raw data set)
+//        return $stmt->fetchAll();
+    }
 
     // /**
     //  * @return WordsList[] Returns an array of WordsList objects
