@@ -95,4 +95,20 @@ class WordsListController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/{id}", name="delete_list", methods={"DELETE"})
+     */
+    public function delete(Request $request, WordsList $list): Response
+    {
+        //TODO: add alert before deleting
+
+        if ($this->isCsrfTokenValid('delete'.$list->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($list);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('words_list');
+    }
 }
