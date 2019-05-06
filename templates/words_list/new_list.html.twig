@@ -1,3 +1,14 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-{{ form_end(form) }}
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle liste{% endblock %}
+
+{% block body %}
+
+    {{ include('default/_navbar.html.twig') }}
+
+    <h1>Nouvelle liste</h1>
+
+    {{ include('words_list/_form.html.twig') }}
+
+    <a href="{{ path('words_list') }}">Retour</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block body %}
+
+    {{ include('default/_navbar.html.twig') }}
+
+    <h1>Modifier une liste</h1>
+
+    {{ include('words_list/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('words_list') }}">Retour</a>
+{% endblock %}

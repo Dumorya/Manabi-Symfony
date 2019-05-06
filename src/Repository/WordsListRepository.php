@@ -31,6 +31,15 @@ class WordsListRepository extends ServiceEntityRepository
             ;
     }
 
+//    public function getUserLists()
+//    {
+//        return $this->createQueryBuilder('u')
+//                    ->select('count(u.id)')
+//                    ->getQuery()
+//                    ->getSingleScalarResult()
+//            ;
+//    }
+
     // /**
     //  * @return WordsList[] Returns an array of WordsList objects
     //  */

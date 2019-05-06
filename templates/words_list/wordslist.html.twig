@@ -1,14 +1,22 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+    {{ include('default/_navbar.html.twig') }}
+
     <h1>Mes listes</h1>
 
-    {% if lists == 0 %}
+    {% if listNumber == 0 %}
         <p>Vous n'avez pas encore de liste, ajoutez-en !</p>
 
         <a href="{{ path('new_list') }}">Ajouter</a>
     {% else %}
         <p>Voici vos listes</p>
+
+        <ul>
+        {% for list in lists %}
+            <li><a href="{{ path('show_list', {'id': list.id}) }}">{{ list.name }}</a></li>
+        {% endfor %}
+        </ul>
 
         <a href="{{ path('new_list') }}">Ajouter</a>
     {% endif %}

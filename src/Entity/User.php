@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -47,6 +49,16 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\WordsList", mappedBy="userId")
+     */
+    private $wordsLists;
+
+    public function __construct()
+    {
+        $this->wordsLists = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -160,5 +172,36 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @return Collection|WordsList[]
+     */
+    public function getWordsLists(): Collection
+    {
+        return $this->wordsLists;
+    }
+
+    public function addWordsList(WordsList $wordsList): self
+    {
+        if (!$this->wordsLists->contains($wordsList)) {
+            $this->wordsLists[] = $wordsList;
+            $wordsList->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWordsList(WordsList $wordsList): self
+    {
+        if ($this->wordsLists->contains($wordsList)) {
+            $this->wordsLists->removeElement($wordsList);
+            // set the owning side to null (unless already changed)
+            if ($wordsList->getUserId() === $this) {
+                $wordsList->setUserId(null);
+            }
+        }
+
+        return $this;
     }
 }
