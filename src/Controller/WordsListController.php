@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class WordsListController extends AbstractController
 {
     /**
-     * @Route("/word/list", name="words_list")
+     * @Route("/list", name="words_list")
      */
     public function index()
     {
@@ -23,7 +23,6 @@ class WordsListController extends AbstractController
 
         $user       = $this->container->get('security.token_storage')->getToken()->getUser();
         $userId     = $user->getId();
-//        $userLists  = $repository->getUserLists($userId);
 
         // get the number of lists
         $listNumber = $repository->countUserLists($userId);
@@ -65,7 +64,7 @@ class WordsListController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="show_list", methods={"GET"})
+     * @Route("/list/{id}", name="show_list", methods={"GET"})
      */
     public function show(WordsList $list): Response
     {

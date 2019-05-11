@@ -1,6 +1,12 @@
-{#{{ form_start(form) }}#}
-    {#{{ form_label(form.name, "Nom") }}#}
-    {#{{ form_widget(form.name) }}#}
+{{ form_start(form) }}
+    {{ form_label(form.from_word, "Mot") }}
+    {{ form_widget(form.from_word) }}
 
-    {#{{ form_widget(form.save, { 'label': 'Valider' }) }}#}
-{#{{ form_end(form) }}#}
+    {{ form_label(form.to_translation, "Traduction") }}
+    {{ form_widget(form.to_translation) }}
+
+    {{ form_label(form.description, "Commentaire") }}
+    {{ form_widget(form.description) }}
+
+    {{ form_widget(form.save, { 'label': 'Valider' }) }}
+{{ form_end(form) }}
