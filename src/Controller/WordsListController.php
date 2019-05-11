@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Word;
 use App\Entity\WordsList;
 use App\Entity\User;
 use App\Form\WordsListType;
@@ -68,8 +69,12 @@ class WordsListController extends AbstractController
      */
     public function show(WordsList $list): Response
     {
+        $repository = $this->getDoctrine()->getRepository(Word::class);
+        $words = $repository->findByWordsListId($list->getId());
+
         return $this->render('words_list/show_list.html.twig', [
             'list' => $list,
+            'words' => $words,
         ]);
     }
 

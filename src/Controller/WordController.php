@@ -22,6 +22,9 @@ class WordController extends AbstractController
         $form = $this->createForm(WordType::class, $word);
         $form->handleRequest($request);
 
+        $repository = $this->getDoctrine()->getRepository(Word::class);
+        $words = $repository->findByWordsListId($wordsList->getId());
+
         if ($form->isSubmitted() && $form->isValid())
         {
             $entityManager = $this->getDoctrine()->getManager();
@@ -31,12 +34,12 @@ class WordController extends AbstractController
             return $this->render('words_list/show_list.html.twig', [
                 'id'   => $wordsList->getId(),
                 'list' => $wordsList,
-                'word' => $word,
+                'words' => $words,
             ]);
         }
 
-        return $this->render('word/new_word.html.twig', [
-            'word' => $word,
+        return $this->$words('word/new_word.html.twig', [
+            'words' => $words,
             'form' => $form->createView(),
         ]);
     }

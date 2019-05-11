@@ -19,6 +19,16 @@ class WordRepository extends ServiceEntityRepository
         parent::__construct($registry, Word::class);
     }
 
+    public function findByWordsListId($wordsListId)
+    {
+        return $this->createQueryBuilder('w')
+            ->andWhere('w.words_list_id = :wordslist_id')
+            ->setParameter('wordslist_id', $wordsListId)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Word
     {

@@ -10,14 +10,12 @@
 
     <table class="table">
         <tbody>
+        {% for word in words %}
         <tr>
-            <th>Id</th>
             <td>{{ word.fromWord }}</td>
-        </tr>
-        <tr>
-            <th>Title</th>
             <td>{{ word.toTranslation }}</td>
         </tr>
+        {% endfor %}
         </tbody>
     </table>
 
