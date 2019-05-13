@@ -38,9 +38,19 @@ class WordController extends AbstractController
             ]);
         }
 
-        return $this->$words('word/new_word.html.twig', [
+        return $this->render('word/new_word.html.twig', [
             'words' => $words,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/word/show/{id}", name="show_word", methods={"GET"})
+     */
+    public function show(Word $word): Response
+    {
+        return $this->render('word/show_word.html.twig', [
+            'word' => $word,
         ]);
     }
 }

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon mot - {{ word.fromWord }}{% endblock %}
+
+{% block body %}
+
+    {{ include('default/_navbar.html.twig') }}
+
+    <h1>Voir un mot</h1>
+
+    <div>
+        <p>Mot :</p>
+        <p>{{ word.fromWord }}</p>
+    </div>
+    <div>
+        <p>Traduction :</p>
+        <p>{{ word.toTranslation }}</p>
+    </div>
+    <div>
+        <p>Commentaire :</p>
+        <p>{{ word.description }}</p>
+    </div>
+
+    {#<a href="{{ path('add_words', {'id': list.id}) }}">Ajouter des mots</a>#}
+    {#<a href="{{ path('edit_list', {'id': list.id}) }}">Modifier</a>#}
+    {#{{ include('words_list/_delete_form.html.twig') }}#}
+    {#<a href="{{ path('words_list') }}">Retour</a>#}
+{% endblock %}
