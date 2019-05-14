@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 class WordController extends AbstractController
 {
     /**
-     * @Route("/word/{id}", name="add_words",  methods={"GET","POST"})
+     * @Route("/list/{id}/word/new", name="add_words",  methods={"GET","POST"})
      */
     public function index(Request $request, WordsList $wordsList) : Response
     {
@@ -31,10 +31,14 @@ class WordController extends AbstractController
             $entityManager->persist($word);
             $entityManager->flush();
 
-            return $this->render('words_list/show_list.html.twig', [
-                'id'   => $wordsList->getId(),
-                'list' => $wordsList,
-                'words' => $words,
+//            return $this->render('words_list/show_list.html.twig', [
+//                'id'   => $wordsList->getId(),
+//                'list' => $wordsList,
+//                'words' => $words,
+//            ]);
+
+            return $this->redirectToRoute('show_list', [
+                'id' => $wordsList->getId(),
             ]);
         }
 
@@ -51,6 +55,52 @@ class WordController extends AbstractController
     {
         return $this->render('word/show_word.html.twig', [
             'word' => $word,
+        ]);
+    }
+
+    /**
+     * @Route("/word/edit_word/{id}", name="edit_word", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Word $word): Response
+    {
+        $form = $this->createForm(WordType::class, $word);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('show_word', [
+                'id' => $word->getId(),
+            ]);
+        }
+
+        return $this->render('word/edit_word.html.twig', [
+            'word' => $word,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/word/delete/{id}", name="delete_word", methods={"DELETE"})
+     */
+    public function delete(Request $request, Word $word): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$word->getId(), $request->request->get('_token')))
+        {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($word);
+            $entityManager->flush();
+        }
+
+        // get current wordslist id
+        $wordsListId = $word->getWordsListId();
+        $repository  = $this->getDoctrine()->getRepository(WordsList::class);
+        // get the current list with the id
+        $list        = $repository->find($wordsListId);
+
+        return $this->redirectToRoute('show_list', [
+            'id' => $list->getId(),
         ]);
     }
 }

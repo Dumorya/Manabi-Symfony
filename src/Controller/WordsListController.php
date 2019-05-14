@@ -39,7 +39,7 @@ class WordsListController extends AbstractController
     }
 
     /**
-     * @Route("/new_list", name="new_list", methods={"GET","POST"})
+     * @Route("/list/new", name="new_list", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -79,7 +79,7 @@ class WordsListController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit_list", name="edit_list", methods={"GET","POST"})
+     * @Route("/list/edit/{id}", name="edit_list", methods={"GET","POST"})
      */
     public function edit(Request $request, WordsList $list): Response
     {
@@ -101,12 +101,10 @@ class WordsListController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="delete_list", methods={"DELETE"})
+     * @Route("/list/delete/{id}", name="delete_list", methods={"DELETE"})
      */
     public function delete(Request $request, WordsList $list): Response
     {
-        //TODO: add alert before deleting
-
         if ($this->isCsrfTokenValid('delete'.$list->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($list);

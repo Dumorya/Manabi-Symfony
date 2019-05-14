@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('delete_word', {'id': word.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer le mot {{ word.fromWord }} ?')">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ word.id) }}">
+    <button class="btn">Supprimer</button>
+</form>
