@@ -23,5 +23,5 @@
 
     <a href="{{ path('edit_word', {'id': word.id}) }}">Modifier</a>
     {{ include('word/_delete_form.html.twig') }}
-    {#<a href="{{ path('words_list') }}">Retour</a>#}
+    <a href="{{ path('show_list', {'id': word.wordsListId}) }}">Retour</a>
 {% endblock %}
