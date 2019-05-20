@@ -9,4 +9,6 @@
     <h1>Modifier mon profil</h1>
 
     {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('show_profile') }}">Retour</a>
 {% endblock %}

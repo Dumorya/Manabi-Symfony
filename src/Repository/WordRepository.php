@@ -22,7 +22,7 @@ class WordRepository extends ServiceEntityRepository
     public function findByWordsListId($wordsListId)
     {
         return $this->createQueryBuilder('w')
-            ->andWhere('w.words_list_id = :wordslist_id')
+            ->andWhere('w.words_list = :wordslist_id')
             ->setParameter('wordslist_id', $wordsListId)
             ->getQuery()
             ->getResult()

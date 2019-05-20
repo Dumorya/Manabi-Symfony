@@ -32,10 +32,10 @@ class Word
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\WordsList", inversedBy="word_id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\WordsList", inversedBy="words")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $words_list_id;
+    private $words_list;
 
     public function getId(): ?int
     {
@@ -78,14 +78,14 @@ class Word
         return $this;
     }
 
-    public function getWordsListId(): ?WordsList
+    public function getWordsList(): ?WordsList
     {
-        return $this->words_list_id;
+        return $this->words_list;
     }
 
-    public function setWordsListId(?WordsList $words_list_id): self
+    public function setWordsList(?WordsList $words_list): self
     {
-        $this->words_list_id = $words_list_id;
+        $this->words_list = $words_list;
 
         return $this;
     }

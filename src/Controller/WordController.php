@@ -18,7 +18,7 @@ class WordController extends AbstractController
     public function index(Request $request, WordsList $wordsList) : Response
     {
         $word = new Word();
-        $word->setWordsListId($wordsList);
+        $word->setWordsList($wordsList);
         $form = $this->createForm(WordType::class, $word);
         $form->handleRequest($request);
 
@@ -30,12 +30,6 @@ class WordController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($word);
             $entityManager->flush();
-
-//            return $this->render('words_list/show_list.html.twig', [
-//                'id'   => $wordsList->getId(),
-//                'list' => $wordsList,
-//                'words' => $words,
-//            ]);
 
             return $this->redirectToRoute('show_list', [
                 'id' => $wordsList->getId(),
@@ -94,7 +88,7 @@ class WordController extends AbstractController
         }
 
         // get current wordslist id
-        $wordsListId = $word->getWordsListId();
+        $wordsListId = $word->getWordsList();
         $repository  = $this->getDoctrine()->getRepository(WordsList::class);
         // get the current list with the id
         $list        = $repository->find($wordsListId);

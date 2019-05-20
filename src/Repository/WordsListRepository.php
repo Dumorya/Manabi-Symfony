@@ -26,7 +26,7 @@ class WordsListRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('w')
                     ->select('count(w.id)')
-                    ->andWhere('w.userId = :user_id')
+                    ->andWhere('w.user = :user_id')
                     ->setParameter('user_id', $userId)
                     ->getQuery()
                     ->getSingleScalarResult()
@@ -36,7 +36,7 @@ class WordsListRepository extends ServiceEntityRepository
     public function getUserLists($userId)
     {
         return $this->createQueryBuilder('u')
-                    ->andWhere('u.userId = :user_id')
+                    ->andWhere('u.user = :user_id')
                     ->setParameter('user_id', $userId)
                     ->getQuery()
                     ->getResult()

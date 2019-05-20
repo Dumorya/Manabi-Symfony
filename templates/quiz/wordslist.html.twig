@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {{ include('default/_navbar.html.twig') }}
+
+    <h1>Choisir une liste</h1>
+
+    {% if listNumber == 0 %}
+        <p>Vous n'avez pas encore de liste, ajoutez-en !</p>
+
+        <a href="{{ path('new_list') }}">Ajouter</a>
+    {% else %}
+        <form action="{{ path('start_quiz') }}" method="post">
+            <ul>
+                {% for list in lists %}
+                    <li>
+                        <label>
+                            <input type="radio" name="_quizList" value="{{ list.name }}">{{ list.name }}
+                        </label>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <button type="submit">Commencer</button>
+        </form>
+    {% endif %}
+
+{% endblock %}

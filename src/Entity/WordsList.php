@@ -24,19 +24,19 @@ class WordsList
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Word", mappedBy="words_list_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Word", mappedBy="words_list", orphanRemoval=true)
      */
-    private $word_id;
+    private $words;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="wordsLists")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $userId;
+    private $user;
 
     public function __construct()
     {
-        $this->word_id = new ArrayCollection();
+        $this->words = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -59,16 +59,16 @@ class WordsList
     /**
      * @return Collection|Word[]
      */
-    public function getWordId(): Collection
+    public function getWords(): Collection
     {
-        return $this->word_id;
+        return $this->words;
     }
 
     public function addWordId(Word $wordId): self
     {
-        if (!$this->word_id->contains($wordId)) {
-            $this->word_id[] = $wordId;
-            $wordId->setWordsListId($this);
+        if (!$this->words->contains($wordId)) {
+            $this->words[] = $wordId;
+            $wordId->setWordsList($this);
         }
 
         return $this;
@@ -76,25 +76,25 @@ class WordsList
 
     public function removeWordId(Word $wordId): self
     {
-        if ($this->word_id->contains($wordId)) {
-            $this->word_id->removeElement($wordId);
+        if ($this->words->contains($wordId)) {
+            $this->words->removeElement($wordId);
             // set the owning side to null (unless already changed)
-            if ($wordId->getWordsListId() === $this) {
-                $wordId->setWordsListId(null);
+            if ($wordId->getWordsList() === $this) {
+                $wordId->setWordsList(null);
             }
         }
 
         return $this;
     }
 
-    public function getUserId(): ?User
+    public function getUser(): ?User
     {
-        return $this->userId;
+        return $this->user;
     }
 
-    public function setUserId(?User $userId): self
+    public function setUser(?User $user): self
     {
-        $this->userId = $userId;
+        $this->user = $user;
 
         return $this;
     }

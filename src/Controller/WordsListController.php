@@ -45,7 +45,7 @@ class WordsListController extends AbstractController
     {
         $wordsList = new WordsList();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $wordsList->setUserId($user);
+        $wordsList->setUser($user);
         $form = $this->createForm(WordsListType::class, $wordsList);
         $form->handleRequest($request);
 

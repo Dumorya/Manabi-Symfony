@@ -51,7 +51,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\WordsList", mappedBy="userId")
+     * @ORM\OneToMany(targetEntity="App\Entity\WordsList", mappedBy="user")
      */
     private $wordsLists;
 
@@ -186,7 +186,7 @@ class User implements UserInterface
     {
         if (!$this->wordsLists->contains($wordsList)) {
             $this->wordsLists[] = $wordsList;
-            $wordsList->setUserId($this);
+            $wordsList->setUser($this);
         }
 
         return $this;
@@ -197,8 +197,8 @@ class User implements UserInterface
         if ($this->wordsLists->contains($wordsList)) {
             $this->wordsLists->removeElement($wordsList);
             // set the owning side to null (unless already changed)
-            if ($wordsList->getUserId() === $this) {
-                $wordsList->setUserId(null);
+            if ($wordsList->getUser() === $this) {
+                $wordsList->setUser(null);
             }
         }
 
