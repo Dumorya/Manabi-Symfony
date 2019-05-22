@@ -2,7 +2,7 @@ security:
     encoders:
         # use your user class name here
         App\Entity\User:
-            algorithm: bcrypt
+            algorithm: argon2i
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:

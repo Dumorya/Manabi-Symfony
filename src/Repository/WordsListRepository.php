@@ -4,7 +4,9 @@ namespace App\Repository;
 
 use App\Entity\WordsList;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
  * @method WordsList|null find($id, $lockMode = null, $lockVersion = null)
@@ -65,6 +67,27 @@ class WordsListRepository extends ServiceEntityRepository
 //        // returns an array of arrays (i.e. a raw data set)
 //        return $stmt->fetchAll();
     }
+
+//    public function getRandomWords($listId)
+//    {
+////        $query = $entityManager->createQuery(
+////            'SELECT w.from_word
+////        FROM App\Entity\Word w
+////        WHERE w.words_list_id = :list_id
+////        ORDER BY RAND() LIMIT 20'
+////        )->setParameter('list_id', $listId);
+////
+////        // returns an array of Product objects
+////        return $query->execute();
+//
+//        $entityManager = $this->getEntityManager();
+//
+//        $rsm = new ResultSetMapping();
+//        $sql = $entityManager->createNativeQuery("SELECT * FROM word WHERE words_list_id = ? ORDER BY RAND() LIMIT 20", $rsm);
+//        $sql->setParameter(1, $listId);
+//        return $sql->getResult();
+//    }
+
 
     // /**
     //  * @return WordsList[] Returns an array of WordsList objects

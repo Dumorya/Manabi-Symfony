@@ -41,8 +41,15 @@ class QuizController extends AbstractController
         $chosenList = $request->request->get('_quizList');
         $list = $this->getDoctrine()->getRepository(WordsList::class)->findOneBy([ "name" => $chosenList ]);
 
-        // TODO: faire un rand() en SQL en faiant un custom repository plutôt que de la faire après en PHP
-        $wordsQuestion = array_rand($list->getWords()->toArray(), 3);
+        // TODO: faire un rand() en SQL en faiant un custom repository plutôt que de la faire après en PHP car là
+        // TODO: on shuffle tous les mots de la liste et on en prend 20, c'est pas bon niveau perf
+
+        // turn the object into an array
+        $wordsArray = $list->getWords()->toArray();
+        // shuffle all the words
+        shuffle($wordsArray);
+        // get only the 20 first words
+        $wordsQuestion = array_slice($wordsArray, 0, 20);
 
         return $this->render('quiz/quiz.html.twig', [
             'list' => $list,
