@@ -1,10 +1,20 @@
 {% extends "base.html.twig" %}
 
+{% block title %}Accueil{% endblock %}
+
 {% block body %}
     {{ include('default/_navbar.html.twig') }}
 
-    <h1>Accueil</h1>
+    <div class="flex">
+        <div class="homeImages">
+            <img src="{{ asset('images/planete.png') }}" alt="planète" class="homePlanet"/>
+            <img src="{{ asset('images/avions_accueil.png') }}" alt="avions"/>
+        </div>
+        <div class="homeButtons">
+            <a href="{{ path('words_list') }}">Voir mes listes</a>
+            <a href="{{ path('quiz_wordslist') }}">Lancer un quiz</a>
+            <a href="{{ path('show_profile') }}">Profil</a>
+        </div>
+    </div>
 
-    <a href="{{ path('words_list') }}">Voir mes listes</a>
-    <a href="">Lancer un quiz</a>
 {% endblock %}

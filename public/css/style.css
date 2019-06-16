@@ -5,6 +5,7 @@ body
     overflow:hidden;
     background-color: #FAFAFA;
     font-family: 'Poppins', sans-serif;
+    margin: 0 20px 0 20px;
 }
 
 .planet
@@ -123,7 +124,7 @@ body
     padding: 0px 50px 30px 50px;
 }
 
-.firstForm > form > div > input.form-control
+.firstForm > form > div > input
 {
     padding: 15px 0px;
     border-radius: 40px;
@@ -152,25 +153,160 @@ body
     }
 }
 
-/* register page */
+/* registration page */
+
+.flex
+{
+    display: flex;
+    align-items: center;
+}
+
+.flexForm, .homeButtons
+{
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
+    align-items: center;
+}
+
+.registerImage
+{
+    position: relative;
+}
 
 .registerImage > img
 {
-    width: 40%;
+    width: 100%;
     height: auto;
+    margin-left: 100px;
+}
+
+.registerImage > p
+{
+    position: absolute;
+    left: 70%;
+    bottom: 40%;
+    font-size: 3em;
+    color: white;
+    transform: translate(-50%, 50%);
+    width: 100%;
 }
 
 .registerForm
 {
-    width: 25%;
+    width: 100%;
     border-radius: 40px;
     background-color: white;
     box-shadow: 23px 23px 26px -11px rgba(0,0,0,0.2);
     padding: 50px 30px;
     margin-bottom: 50px;
+}
 
-    position: absolute; /* postulat de départ */
-    top: 50%;
-    left: 60%; /* à 50%/50% du parent référent */
-    transform: translate(-10%, -50%);
+.registerForm > h1
+{
+    padding-left: 50px;
+}
+
+.registerLogo > img
+{
+    width: 300px;
+}
+
+.backLink
+{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    transition: all 0.3s ease-out;
+}
+
+.backLink:hover
+{
+    color: #B63966;
+    transition: all 0.3s ease-out;
+}
+
+/* navbar */
+
+.navbar
+{
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 50px;
+}
+
+.navbar > ul > li
+{
+    display: inline-block;
+}
+
+.navbar > ul > li > a
+{
+    text-decoration: none;
+    margin-right: 50px;
+    font-size: 20px;
+    color: black;
+    transition: all 0.3s ease-out;
+}
+
+.navbar > ul > li > a:hover
+{
+    color: #B63966;
+    transition: all 0.3s ease-out;
+}
+
+.navbar > img
+{
+    height: 80px;
+    width: auto;
+}
+
+/* homepage */
+
+.homePlanet
+{
+    width: 40%;
+}
+
+.homeImages
+{
+    display: flex;
+    align-items: center;
+}
+
+.homeButtons
+{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.homeButtons > a
+{
+    padding: 80px 100px;
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    text-decoration: none;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2) ;
+}
+
+.homeButtons > a:first-child
+{
+    border: 1px solid #E9BC27;
+    background-color: #E9BC27;
+}
+
+.homeButtons > a:nth-child(2)
+{
+    border: 1px solid #35A5AA;
+    background-color: #35A5AA;
+}
+
+.homeButtons > a:last-child
+{
+    border: 1px solid #B63966;
+    background-color: #B63966;
 }
