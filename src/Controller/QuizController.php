@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\WordsList;
+use App\Form\QuizFlow;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,9 +52,12 @@ class QuizController extends AbstractController
         // get only the 20 first words
         $wordsQuestion = array_slice($wordsArray, 0, 20);
 
+        $questions = ['Que signifie ', 'Comment dit-on '];
+
         return $this->render('quiz/quiz.html.twig', [
-            'list' => $list,
-            'words' => $wordsQuestion
+            'list'      => $list,
+            'words'     => $wordsQuestion,
+            'questions' => $questions
         ]);
     }
 }

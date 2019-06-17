@@ -310,3 +310,9 @@ body
     border: 1px solid #B63966;
     background-color: #B63966;
 }
+
+/* quiz */
+.answer
+{
+    display: none;
+}

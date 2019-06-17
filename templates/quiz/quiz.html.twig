@@ -7,29 +7,35 @@
 
     <h1>{{ list.name }}</h1>
 
-    {#{% for word in words %}#}
-        {#<p>{{ word.fromWord }}</p>#}
-        {##}
-    {#{% endfor %}#}
 
-    <div>
-        Steps:
-        {% include '@CraueFormFlow/FormFlow/stepList.html.twig' %}
-    </div>
+    {% for word in words %}
+        <div class="question">
+            <label for="question{{ loop.index }}">
+                {% set randomQuestion = random(questions) %}
+                {{ randomQuestion }}
+                {% if randomQuestion == 'Que signifie ' %}
+                    {{ word.fromWord }} ?
+                {% else %}
+                    {{ word.toTranslation }} ?
+                {% endif %}
+            </label>
+            <input type="text" id="question{{ loop.index }}"/>
+            <button class="validateQuestionButton">Valider</button>
+            <p class="answer">
+                <b>
+                    {% if randomQuestion == 'Que signifie ' %}
+                        {{ word.toTranslation }}
+                    {% else %}
+                        {{ word.fromWord }}
+                    {% endif %}
+                </b>
+            </p>
 
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
-
-    {% if flow.getCurrentStepNumber() == 1 %}
-        <div>
-            La question 1 ?? <br />
-            {{ form_row(form.translation) }}
         </div>
-    {% endif %}
+    {% endfor %}
 
-    {{ form_rest(form) }}
-
-    {% include '@CraueFormFlow/FormFlow/buttons.html.twig' %}
-    {{ form_end(form) }}
+    {% block javascripts %}
+        <script src="{{ asset('js/quiz.js') }}"></script>
+    {% endblock %}
 
 {% endblock %}
