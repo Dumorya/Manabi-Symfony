@@ -312,7 +312,80 @@ body
 }
 
 /* quiz */
+.answerSentence
+{
+    display: none;
+}
+
 .answer
+{
+    color: #B63966;
+}
+
+.question > input
+{
+    border: 2px solid #6A6A6A;
+    border-radius: 40px;
+    background-color: white;
+    height: 100px;
+    width: 400px;
+    padding: 20px;
+}
+
+.quiz:focus div, .quiz:focus, .quiz div:focus, .quiz input:focus
+{
+    outline: none;
+}
+
+.quiz .slick-prev
+{
+    display: none !important;
+}
+
+.validateQuestionButton, .quiz .slick-next
+{
+    padding: 15px 0px;
+    border-radius: 40px;
+    border: 2px solid #B63966;
+    background-color: #B63966;
+    color: white;
+    width: 200px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    transition: all 0.3s ease-out;
+}
+
+.validateQuestionButton:hover, .quiz .slick-next:hover
+{
+    padding: 15px 0px;
+    border-radius: 40px;
+    border: 2px solid #B63966;
+    background-color: transparent;
+    color: #B63966;
+    width: 200px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.validateButtonDisabled
+{
+    background-color: #6A6A6A !important;
+    border-color: #6A6A6A !important;
+    cursor: not-allowed !important;
+}
+
+.validateButtonDisabled:hover
+{
+    color: white !important;
+}
+
+.quiz .slick-next
+{
+    display: none !important;
+}
+
+.finalScore, .goToScore
 {
     display: none;
 }

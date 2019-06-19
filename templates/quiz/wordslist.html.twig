@@ -23,8 +23,12 @@
                 {% endfor %}
             </ul>
 
-            <button type="submit">Commencer</button>
+            <button type="submit" class="startQuiz">Commencer</button>
         </form>
     {% endif %}
+
+    {% block javascripts %}
+        <script src="{{ asset('js/quiz.js') }}"></script>
+    {% endblock %}
 
 {% endblock %}

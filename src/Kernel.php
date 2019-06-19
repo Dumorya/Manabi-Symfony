@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Craue\FormFlowBundle\CraueFormFlowBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
@@ -22,7 +21,6 @@ class Kernel extends BaseKernel
         foreach ($contents as $class => $envs) {
             if ($envs[$this->environment] ?? $envs['all'] ?? false) {
                 yield new $class();
-                new CraueFormFlowBundle();
             }
         }
     }
