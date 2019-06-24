@@ -34,6 +34,11 @@ class WordsList
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $noteBookColor;
+
     public function __construct()
     {
         $this->words = new ArrayCollection();
@@ -95,6 +100,18 @@ class WordsList
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getNoteBookColor(): ?string
+    {
+        return $this->noteBookColor;
+    }
+
+    public function setNoteBookColor(string $noteBookColor): self
+    {
+        $this->noteBookColor = $noteBookColor;
 
         return $this;
     }

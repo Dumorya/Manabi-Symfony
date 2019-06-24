@@ -27,6 +27,8 @@ class QuizController extends AbstractController
         // get all the lists of the current user
         $lists = $repository->getUserLists($userId);
 
+        $classes = ['blueNotebook', 'redNotebook', 'yellowNotebook'];
+
         return $this->render('quiz/wordslist.html.twig', [
             'controller_name' => 'QuizController',
             'listNumber'      => $listNumber,
@@ -40,7 +42,7 @@ class QuizController extends AbstractController
     public function getChosenList(Request $request) : Response
     {
         $chosenList = $request->request->get('_quizList');
-        $list = $this->getDoctrine()->getRepository(WordsList::class)->findOneBy([ "name" => $chosenList ]);
+        $list = $this->getDoctrine()->getRepository(WordsList::class)->findOneBy([ "id" => $chosenList ]);
 
         // TODO: faire un rand() en SQL en faisant un custom repository plutôt que de la faire après en PHP car là
         // TODO: on shuffle tous les mots de la liste et on en prend 20, c'est pas bon niveau perf

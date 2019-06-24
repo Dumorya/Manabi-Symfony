@@ -342,7 +342,7 @@ body
     display: none !important;
 }
 
-.validateQuestionButton, .quiz .slick-next
+.validateQuestionButton, .quiz .slick-next, .validateQuestionEnd, .goToScore, .restart
 {
     padding: 15px 0px;
     border-radius: 40px;
@@ -356,7 +356,7 @@ body
     transition: all 0.3s ease-out;
 }
 
-.validateQuestionButton:hover, .quiz .slick-next:hover
+.validateQuestionButton:hover, .quiz .slick-next:hover, .validateQuestionEnd:hover, .goToScore:hover, .exit, .restart:hover
 {
     padding: 15px 0px;
     border-radius: 40px;
@@ -385,7 +385,38 @@ body
     display: none !important;
 }
 
-.finalScore, .goToScore
+.finalScore, .goToScore, .hiddenInput
 {
     display: none;
+}
+
+/* lists page */
+.listsContainer
+{
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 23px 23px 26px -11px rgba(0,0,0,0.2);
+    margin: 50px 150px;
+    height: 100%;
+}
+
+.listsContainer form ul
+ {
+     margin-left: 40px;
+     list-style:none;
+ }
+
+.blueNotebook
+{
+    list-style-image: url(../images/notebook_blue.png);
+}
+
+.redNotebook
+{
+    list-style-image: url(../images/notebook_red.png);
+}
+
+.yellowNotebook
+{
+    list-style-image: url(../images/notebook_yellow.png);
 }

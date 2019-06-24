@@ -34,7 +34,6 @@ $(document).ready(function()
             $(this).parent().find('.answerSentence').text('Bonne réponse !');
             $(this).parent().find('.answerSentence').css('color','#35A5AA');
             $(this).parent().find('input').css('border-color','#35A5AA');
-            $(this).parent().find('input').prop('disabled','true');
 
             score++;
         }
@@ -47,7 +46,6 @@ $(document).ready(function()
             // strike the answer
             $(this).parent().find('input').css('text-decoration','line-through');
             $(this).parent().find('input').css('border-color','#B63966');
-            $(this).parent().find('input').prop('disabled','true');
 
             // display the right answer
             $(this).parent().find('.answer').text(trueAnswer);
@@ -61,15 +59,15 @@ $(document).ready(function()
     });
 
     // by default we disable the validate button
-    $('.validateQuestionButton').prop('disabled','true').addClass('validateButtonDisabled');
+    $('.validateQuestionButton, .validateQuestionEnd').prop('disabled','true').addClass('validateButtonDisabled');
 
     // if the answer field is not empty, we enable the validate button
     $( ".quiz input" ).keyup(function()
     {
         if($(this).val() !== '')
         {
-            $(this).parent().find('.validateQuestionButton').removeClass('validateButtonDisabled');
-            $(this).parent().find('.validateQuestionButton').removeAttr("disabled");
+            $(this).parent().find('.validateQuestionButton, .validateQuestionEnd').removeClass('validateButtonDisabled');
+            $(this).parent().find('.validateQuestionButton, .validateQuestionEnd').removeAttr("disabled");
         }
     });
 
@@ -92,7 +90,6 @@ $(document).ready(function()
             $(this).parent().find('.answerSentence').text('Bonne réponse !');
             $(this).parent().find('.answerSentence').css('color','#35A5AA');
             $(this).parent().find('input').css('border-color','#35A5AA');
-            $(this).parent().find('input').prop('disabled','true');
 
             score++;
         }
@@ -105,7 +102,6 @@ $(document).ready(function()
             // strike the answer
             $(this).parent().find('input').css('text-decoration','line-through');
             $(this).parent().find('input').css('border-color','#B63966');
-            $(this).parent().find('input').prop('disabled','true');
 
             // display the right answer
             $(this).parent().find('.answer').text(trueAnswer);
@@ -117,29 +113,30 @@ $(document).ready(function()
         $('.finalScore').css('display','block');
         $('.score b').text(score);
 
-        //TODO: Récupérer le nombre de questions total pour pouvoir attribuer les appréciations dynamiquement (et non juste /20)
+        // get the number of questions in the quiz
+        var wordsLength = $('.score').attr('data-words-length');
 
-        if(score < 5)
+        if(score < wordsLength/4)
         {
             $('.congrats').text('Un peu d\'entrainement et ça ira !');
         }
-        else if(score >= 5 && score < 10)
+        else if(score >= wordsLength/4 && score < wordsLength/2)
         {
             $('.congrats').text('Encore un petit effort !');
         }
-        else if(score >= 10  && score < 15)
+        else if(score >= wordsLength/2  && score < wordsLength/4*3)
         {
             $('.congrats').text('Ca commence à venir !');
         }
-        else if(score >= 15 && score < 17)
+        else if(score >= wordsLength/4*3 && score < wordsLength/4*3.5)
         {
             $('.congrats').text('Bon travail !');
         }
-        else if(score >= 17 && score < 20)
+        else if(score >= wordsLength/4*3.5 && score < wordsLength)
         {
             $('.congrats').text('Très bon travail !');
         }
-        else if(score === 20)
+        else if(score === wordsLength)
         {
             $('.congrats').text('Excellent !');
         }
