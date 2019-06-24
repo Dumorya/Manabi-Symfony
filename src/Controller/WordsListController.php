@@ -46,6 +46,15 @@ class WordsListController extends AbstractController
         $wordsList = new WordsList();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $wordsList->setUser($user);
+
+        // apply a random notebook color
+        $classes = ['blueNotebook', 'redNotebook', 'yellowNotebook'];
+        // shuffle the colors
+        shuffle($classes);
+        // get only the first class
+        $class = array_slice($classes, 0, 1);
+
+        $wordsList->setNoteBookColor($class[0]);
         $form = $this->createForm(WordsListType::class, $wordsList);
         $form->handleRequest($request);
 

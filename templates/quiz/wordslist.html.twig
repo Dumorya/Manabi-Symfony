@@ -16,7 +16,7 @@
             <form action="{{ path('start_quiz') }}" method="post">
                 <ul>
                     {% for list in lists %}
-                        <li class="{{ noteBookClass }}">
+                        <li class="{{ list.noteBookColor }}">
                             <label>
                                 <input type="radio" name="_quizList" value="{{ list.id }}">{{ list.name }}
                             </label>

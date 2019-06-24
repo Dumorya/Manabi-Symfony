@@ -401,10 +401,15 @@ body
 }
 
 .listsContainer form ul
- {
-     margin-left: 40px;
-     list-style:none;
- }
+{
+    margin-left: 40px;
+    list-style:none;
+}
+
+.listsContainer form ul li
+{
+    cursor: pointer;
+}
 
 .blueNotebook
 {

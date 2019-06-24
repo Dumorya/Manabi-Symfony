@@ -27,8 +27,6 @@ class QuizController extends AbstractController
         // get all the lists of the current user
         $lists = $repository->getUserLists($userId);
 
-        $classes = ['blueNotebook', 'redNotebook', 'yellowNotebook'];
-
         return $this->render('quiz/wordslist.html.twig', [
             'controller_name' => 'QuizController',
             'listNumber'      => $listNumber,
