@@ -16,10 +16,10 @@
             <form action="{{ path('start_quiz') }}" method="post">
                 <ul>
                     {% for list in lists %}
-                        <li class="{{ list.noteBookColor }}">
-                            <label>
-                                <input type="radio" name="_quizList" value="{{ list.id }}">{{ list.name }}
-                            </label>
+                        <li>
+                            <input class="{{ list.noteBookColor }}" type="checkbox" id="_quizList{{ loop.index }}" name="_quizList" value="{{ list.id }}">
+                            <label for="_quizList{{ loop.index }}"></label>
+                            <p class="listLabel">{{ list.name }}</p>
                         </li>
                     {% endfor %}
                 </ul>
@@ -29,9 +29,8 @@
         {% endif %}
     </div>
 
+{% endblock %}
 
-    {% block javascripts %}
-        <script src="{{ asset('js/quiz.js') }}"></script>
-    {% endblock %}
-
+{% block javascripts %}
+    <script src="{{ asset('js/checkbox.js') }}"></script>
 {% endblock %}

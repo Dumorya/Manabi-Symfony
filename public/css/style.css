@@ -5,7 +5,18 @@ body
     overflow:hidden;
     background-color: #FAFAFA;
     font-family: 'Poppins', sans-serif;
-    margin: 0 20px 0 20px;
+    margin: 0;
+}
+
+h1
+{
+    margin-left: 150px;
+    font-weight: normal;
+}
+
+*:focus
+{
+    outline: none;
 }
 
 .planet
@@ -232,7 +243,11 @@ body
 {
     display: flex;
     align-items: flex-end;
+    margin-left: 20px;
     margin-bottom: 50px;
+    background-image: url(../images/forme_nav.png);
+    background-position: bottom;
+    background-repeat: no-repeat;
 }
 
 .navbar > ul > li
@@ -322,19 +337,21 @@ body
     color: #B63966;
 }
 
+.questionNumber
+{
+    border-bottom: 1px solid #707070;
+    width: 200px;
+    padding-bottom: 10px;
+}
+
 .question > input
 {
     border: 2px solid #6A6A6A;
-    border-radius: 40px;
+    border-radius: 23px;
     background-color: white;
     height: 100px;
     width: 400px;
     padding: 20px;
-}
-
-.quiz:focus div, .quiz:focus, .quiz div:focus, .quiz input:focus
-{
-    outline: none;
 }
 
 .quiz .slick-prev
@@ -342,7 +359,7 @@ body
     display: none !important;
 }
 
-.validateQuestionButton, .quiz .slick-next, .validateQuestionEnd, .goToScore, .restart
+.validateQuestionButton, .quiz .slick-next, .validateQuestionEnd, .goToScore, .restart, .startQuiz
 {
     padding: 15px 0px;
     border-radius: 40px;
@@ -354,9 +371,11 @@ body
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
     transition: all 0.3s ease-out;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2) ;
 }
 
-.validateQuestionButton:hover, .quiz .slick-next:hover, .validateQuestionEnd:hover, .goToScore:hover, .exit, .restart:hover
+.validateQuestionButton:hover, .quiz .slick-next:hover, .validateQuestionEnd:hover, .goToScore:hover, .exit,
+.restart:hover, .startQuiz:hover
 {
     padding: 15px 0px;
     border-radius: 40px;
@@ -368,14 +387,14 @@ body
     transition: all 0.3s ease-out;
 }
 
-.validateButtonDisabled
+.validateButtonDisabled, .startQuizDisabled
 {
     background-color: #6A6A6A !important;
     border-color: #6A6A6A !important;
     cursor: not-allowed !important;
 }
 
-.validateButtonDisabled:hover
+.validateButtonDisabled:hover, .startQuizDisabled:hover
 {
     color: white !important;
 }
@@ -397,31 +416,114 @@ body
     border-radius: 40px;
     box-shadow: 23px 23px 26px -11px rgba(0,0,0,0.2);
     margin: 50px 150px;
-    height: 100%;
+    height: 50vh;
+    padding: 30px;
 }
 
 .listsContainer form ul
 {
-    margin-left: 40px;
     list-style:none;
 }
 
 .listsContainer form ul li
 {
+    list-style: none;
+}
+
+.blueNotebook, .blueNotebook + label
+{
+    background-image: url(../images/notebook_blue.png);
+    background-repeat: no-repeat;
+}
+
+.redNotebook, .redNotebook + label
+{
+    background-image: url(../images/notebook_red.png);
+    background-repeat: no-repeat;
+}
+
+.yellowNotebook, .yellowNotebook + label
+{
+    background-image: url(../images/notebook_yellow.png);
+    background-repeat: no-repeat;
+}
+
+.listsContainer input[type=checkbox]
+{
+    display: none;
+}
+
+.listsContainer input[type=checkbox] + label
+{
+    height: 186px;
+    width: 141px;
+    display: inline-block;
+    padding: 0;
+    margin: 20px 20px 0 20px;
     cursor: pointer;
 }
 
-.blueNotebook
+.listsContainer li
 {
-    list-style-image: url(../images/notebook_blue.png);
+    border-radius: 8px;
 }
 
-.redNotebook
+.listsContainer ul
 {
-    list-style-image: url(../images/notebook_red.png);
+    display: flex;
 }
 
-.yellowNotebook
+.listLabel
 {
-    list-style-image: url(../images/notebook_yellow.png);
+    text-align: center;
+    margin: 0;
+}
+
+.startQuiz
+{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* the quiz has begun */
+.quizContainer
+{
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 23px 23px 26px -11px rgba(0, 0, 0, 0.2);
+    margin: 50px 150px;
+    height: 70vh;
+    padding: 30px;
+}
+
+.yellowBorder
+{
+    border: 2px solid #E9BC27;
+    border-radius: 29px;
+    margin-left: 0;
+    width: fit-content;
+    text-align: center;
+    padding: 5px 15px;
+}
+
+.redBorder
+{
+    border: 2px solid #B63966;
+    border-radius: 29px;
+    margin-left: 0;
+    width: fit-content;
+    text-align: center;
+    padding: 5px 15px;
+}
+
+.blueBorder
+{
+    border: 2px solid #35A5AA;
+    border-radius: 29px;
+    margin-left: 0;
+    width: fit-content;
+    text-align: center;
+    padding: 5px 15px;
 }

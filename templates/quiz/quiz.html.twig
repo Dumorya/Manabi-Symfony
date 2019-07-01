@@ -15,46 +15,63 @@
 {% block body %}
     {{ include('default/_navbar.html.twig') }}
 
-    <h1>{{ list.name }}</h1>
+    <div class="quizContainer">
+        {% set borderColor = '' %}
+        {% if list.noteBookColor == 'redNotebook' %}
+            {% set borderColor = 'redBorder' %}
+        {% elseif list.noteBookColor == 'yellowNotebook' %}
+            {% set borderColor = 'yellowBorder' %}
+        {% else %}
+            {% set borderColor = 'blueBorder' %}
+        {% endif %}
+        <h1 class="{{ borderColor }}">{{ list.name }}</h1>
+        <a href="{{ path('quiz_wordslist') }}"><img src="{{ asset('images/back.png') }}"/></a>
+        {% if words|length == 0 %}
+            <p>Vous n'avez pas encore de liste, ajoutez-en !</p>
 
-    <div class="quiz">
-        {% for word in words %}
-            {% set questionType = '' %}
-            <div class="question">
-                <p>Question {{ loop.index }} / {{ words|length }}</p>
-                <p>
-                    {% set randomQuestion = random(questions) %}
-                    {{ randomQuestion }}
-                    {% if randomQuestion == 'Que signifie ' %}
-                        {% set questionType = word.toTranslation %}
-                        {{ word.fromWord }} ?
-                    {% else %}
-                        {% set questionType = word.fromWord %}
-                        {{ word.toTranslation }} ?
-                    {% endif %}
-                </p>
-                <label for="question{{ loop.index }}">Réponse</label>
-                <input type="text" id="question{{ loop.index }}" data-answer="{{ questionType }}"/>
-                <p class="answer"></p>
-                <p class="answerSentence"></p>
+            <a href="{{ path('add_words', {'id': list.id}) }}">Ajouter</a>
+        {% else %}
+            <div class="quiz">
+                {% for word in words %}
+                    {% set questionType = '' %}
+                    <div class="question">
+                        <p class="questionNumber">Question {{ loop.index }} / {{ words|length }}</p>
+                        <p>
+                            {% set randomQuestion = random(questions) %}
+                            {{ randomQuestion }}
+                            {% if randomQuestion == 'Que signifie ' %}
+                                {% set questionType = word.toTranslation %}
+                                <b>{{ word.fromWord }}</b> ?
+                            {% else %}
+                                {% set questionType = word.fromWord %}
+                                <b>{{ word.toTranslation }}</b> ?
+                            {% endif %}
+                        </p>
+                        <label for="question{{ loop.index }}">Réponse</label>
+                        <input type="text" id="question{{ loop.index }}" data-answer="{{ questionType }}"/>
+                        <p class="answer"></p>
+                        <p class="answerSentence"></p>
 
-            {% if loop.index != words|length %}
-                <button class="validateQuestionButton">Valider</button>
-            {% else %}
-                <button class="validateQuestionEnd">Valider</button>
-                <button class="goToScore">Terminer</button>
-            {% endif %}
+                        {% if loop.index != words|length %}
+                            <button class="validateQuestionButton">Valider</button>
+                        {% else %}
+                            <button class="validateQuestionEnd">Valider</button>
+                            <button class="goToScore">Terminer</button>
+                        {% endif %}
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
-    </div>
-    <div class="finalScore">
-        <p class="score" data-words-length="{{ words|length }}"><b></b> / {{ words|length }}</p>
-        <p class="congrats"></p>
-        <form action="{{ path('start_quiz') }}" method="post">
-            <input type="hidden" name="_quizList" class="hiddenInput" value="{{ list.id }}"/>
-            <input type="submit" class="restart" value="Recommencer"/>
-        </form>
-        <a class="exit" href="{{ path('homepage') }}">Quitter</a>
+        {% endif %}
+
+        <div class="finalScore">
+            <p class="score" data-words-length="{{ words|length }}"><b></b> / {{ words|length }}</p>
+            <p class="congrats"></p>
+            <form action="{{ path('start_quiz') }}" method="post">
+                <input type="hidden" name="_quizList" class="hiddenInput" value="{{ list.id }}"/>
+                <input type="submit" class="restart" value="Recommencer"/>
+            </form>
+            <a class="exit" href="{{ path('homepage') }}">Quitter</a>
+        </div>
     </div>
 
 {% endblock %}

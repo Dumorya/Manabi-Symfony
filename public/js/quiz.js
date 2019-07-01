@@ -1,6 +1,6 @@
 $(document).ready(function()
 {
-    var score = 0;
+    let score = 0;
 
     // slider
     $('.quiz').slick({
@@ -26,8 +26,8 @@ $(document).ready(function()
         $(this).parent().find('.answerSentence').css('display', 'block');
 
         // get answer written by user
-        var userAnswer = $(this).parent().find('input').val();
-        var trueAnswer = $(this).parent().find('input').attr('data-answer');
+        let userAnswer = $(this).parent().find('input').val();
+        let trueAnswer = $(this).parent().find('input').attr('data-answer');
 
         if(userAnswer === trueAnswer)
         {
@@ -82,8 +82,8 @@ $(document).ready(function()
         $(this).parent().find('.answerSentence').css('display', 'block');
 
         // get answer written by user
-        var userAnswer = $(this).parent().find('input').val();
-        var trueAnswer = $(this).parent().find('input').attr('data-answer');
+        let userAnswer = $(this).parent().find('input').val();
+        let trueAnswer = $(this).parent().find('input').attr('data-answer');
 
         if(userAnswer === trueAnswer)
         {
@@ -114,7 +114,7 @@ $(document).ready(function()
         $('.score b').text(score);
 
         // get the number of questions in the quiz
-        var wordsLength = $('.score').attr('data-words-length');
+        let wordsLength = $('.score').attr('data-words-length');
 
         if(score < wordsLength/4)
         {
@@ -136,7 +136,7 @@ $(document).ready(function()
         {
             $('.congrats').text('Très bon travail !');
         }
-        else if(score === wordsLength)
+        else (score === wordsLength)
         {
             $('.congrats').text('Excellent !');
         }
