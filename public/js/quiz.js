@@ -48,7 +48,7 @@ $(document).ready(function()
             $(this).parent().find('input').css('border-color','#B63966');
 
             // display the right answer
-            $(this).parent().find('.answer').text(trueAnswer);
+            $(this).parent().find('.answer').text("C'était " + trueAnswer + " !");
         }
     });
 
@@ -104,13 +104,16 @@ $(document).ready(function()
             $(this).parent().find('input').css('border-color','#B63966');
 
             // display the right answer
-            $(this).parent().find('.answer').text(trueAnswer);
+            $(this).parent().find('.answer').text("C'était " + trueAnswer + " !");
         }
     });
 
     $('.goToScore').click(function(){
         $('.question').css('display','none');
+        $('.quizPlanet').css('display','none');
         $('.finalScore').css('display','block');
+        $('.endQuizShapeLeft').css('display','block');
+        $('.endQuizShapeRight').css('display','block');
         $('.score b').text(score);
 
         // get the number of questions in the quiz
@@ -136,7 +139,7 @@ $(document).ready(function()
         {
             $('.congrats').text('Très bon travail !');
         }
-        else (score === wordsLength)
+        else if (score == wordsLength)
         {
             $('.congrats').text('Excellent !');
         }

@@ -80,13 +80,13 @@ h1
     color: white;
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
+    opacity: 1;
     transition: all 0.3s ease-out;
 }
 
 .signInButton:hover
 {
-    background-color: #CE7F9C;
-    border: 2px solid #CE7F9C;
+    opacity: 0.8;
     transition: all 0.3s ease-out;
 }
 
@@ -94,13 +94,14 @@ h1
 {
     text-align: center;
     color: #B63966;
+    opacity: 1;
     text-decoration: none;
     transition: all 0.3s ease-out;
 }
 
 .signUpButton:hover
 {
-    color: #CE7F9C;
+    opacity: 0.8;
     transition: all 0.3s ease-out;
 }
 
@@ -113,8 +114,8 @@ h1
     padding: 50px 30px;
     margin-bottom: 50px;
 
-    position: absolute; /* postulat de départ */
-    top: 50%; left: 50%; /* à 50%/50% du parent référent */
+    position: absolute;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
 }
 
@@ -278,6 +279,11 @@ h1
 
 /* homepage */
 
+.homePage
+{
+    margin: 0 100px;
+}
+
 .homePlanet
 {
     width: 40%;
@@ -294,6 +300,7 @@ h1
     display: flex;
     align-items: stretch;
     justify-content: space-between;
+    margin-left: 0;
 }
 
 .homeButtons > a
@@ -306,6 +313,11 @@ h1
     width: 300px;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.2) ;
+}
+
+.homeButtons > a:nth-child(2)
+{
+    margin: 50px 0;
 }
 
 .homeButtons > a:first-child
@@ -366,8 +378,9 @@ h1
     border: 2px solid #B63966;
     background-color: #B63966;
     color: white;
-    width: 200px;
+    width: 300px;
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
     transition: all 0.3s ease-out;
@@ -382,7 +395,7 @@ h1
     border: 2px solid #B63966;
     background-color: transparent;
     color: #B63966;
-    width: 200px;
+    width: 300px;
     cursor: pointer;
     transition: all 0.3s ease-out;
 }
@@ -399,6 +412,15 @@ h1
     color: white !important;
 }
 
+.exit
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    margin-top: 30px;
+}
+
 .quiz .slick-next
 {
     display: none !important;
@@ -407,6 +429,14 @@ h1
 .finalScore, .goToScore, .hiddenInput
 {
     display: none;
+}
+
+.finalScore
+{
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
 }
 
 /* lists page */
@@ -479,6 +509,57 @@ h1
     margin: 0;
 }
 
+.flag
+{
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+}
+
+.addListDiv
+{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.addListDiv > a
+{
+    margin-top: 20px;
+    position: relative;
+    border-radius: 50%;
+    padding: 30px;
+    background-color: #E9BC27;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    display: inline-block;
+    opacity: 1;
+    transition: all 0.3s ease-out;
+}
+
+.addListDiv > a:hover
+{
+    opacity: 0.8;
+    transition: all 0.3s ease-out;
+}
+
+.addListDiv > p
+{
+    font-size: 1.8em;
+    opacity: 0.35;
+    width: 300px;
+}
+
+.addListDiv > a > img
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .startQuiz
 {
     position: absolute;
@@ -487,24 +568,70 @@ h1
     transform: translate(-50%, -50%);
 }
 
+.question > input
+{
+    font-size: 2em;
+}
+
+.endQuizShapeLeft
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: none;
+}
+.endQuizShapeRight
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.divScore
+{
+    border: 2px solid #35A5AA;
+    border-radius: 50%;
+    padding: 50px;
+    width: 100px;
+    height: 100px;
+    white-space: nowrap;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+}
+
+.divScore > p
+{
+    font-size: 2.5em;
+    margin: 0;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.congrats
+{
+    font-size: 1.7em;
+}
+
 /* the quiz has begun */
 .quizContainer
 {
     background-color: white;
-    border-radius: 40px;
+    border-radius: 50px;
     box-shadow: 23px 23px 26px -11px rgba(0, 0, 0, 0.2);
     margin: 50px 150px;
     height: 70vh;
     padding: 30px;
+    position: relative;
 }
 
 .yellowBorder
 {
     border: 2px solid #E9BC27;
     border-radius: 29px;
-    margin-left: 0;
     width: fit-content;
-    text-align: center;
     padding: 5px 15px;
 }
 
@@ -512,9 +639,7 @@ h1
 {
     border: 2px solid #B63966;
     border-radius: 29px;
-    margin-left: 0;
     width: fit-content;
-    text-align: center;
     padding: 5px 15px;
 }
 
@@ -522,8 +647,69 @@ h1
 {
     border: 2px solid #35A5AA;
     border-radius: 29px;
-    margin-left: 0;
     width: fit-content;
-    text-align: center;
     padding: 5px 15px;
+}
+
+.quiz
+{
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.quizPlanet
+{
+    position: fixed;
+    right: 15%;
+    z-index: 10;
+}
+
+.quizPlanet > img
+{
+    width: 400px;
+    height: auto;
+}
+
+.questionStatement
+{
+    font-size: 2em;
+}
+
+.question label
+{
+    display: block;
+    margin-bottom: 10px;
+}
+
+.headerQuiz
+{
+    display: inline-flex;
+    align-items: center;
+}
+
+.headerQuiz > h1
+{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+.headerQuiz > a
+{
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+    align-items: center;
+    display: flex;
+}
+
+.quizInnerContainer
+{
+    padding: 50px;
+}
+
+.headerQuiz > a > img
+{
+    margin-right: 15px;
 }

@@ -16,6 +16,7 @@
     {{ include('default/_navbar.html.twig') }}
 
     <div class="quizContainer">
+
         {% set borderColor = '' %}
         {% if list.noteBookColor == 'redNotebook' %}
             {% set borderColor = 'redBorder' %}
@@ -24,47 +25,68 @@
         {% else %}
             {% set borderColor = 'blueBorder' %}
         {% endif %}
-        <h1 class="{{ borderColor }}">{{ list.name }}</h1>
-        <a href="{{ path('quiz_wordslist') }}"><img src="{{ asset('images/back.png') }}"/></a>
+
+        <div class="headerQuiz">
+            <a href="{{ path('quiz_wordslist') }}"><img src="{{ asset('images/back.png') }}" alt="retour"/>Retour</a>
+            <h1 class="{{ borderColor }}">{{ list.name }}</h1>
+        </div>
+
         {% if words|length == 0 %}
-            <p>Vous n'avez pas encore de liste, ajoutez-en !</p>
+            <img class="flag" src="{{ asset('images/flag.png') }}" alt="flag"/>
+            <div class="addListDiv">
+                <p>Vous n'avez pas encore de mot, ajoutez-en !</p>
+                <a href="{{ path('add_words', {'id': list.id}) }}"><img src="{{ asset('images/plus-symbol.png') }}" /></a>
+            </div>
 
-            <a href="{{ path('add_words', {'id': list.id}) }}">Ajouter</a>
         {% else %}
-            <div class="quiz">
-                {% for word in words %}
-                    {% set questionType = '' %}
-                    <div class="question">
-                        <p class="questionNumber">Question {{ loop.index }} / {{ words|length }}</p>
-                        <p>
-                            {% set randomQuestion = random(questions) %}
-                            {{ randomQuestion }}
-                            {% if randomQuestion == 'Que signifie ' %}
-                                {% set questionType = word.toTranslation %}
-                                <b>{{ word.fromWord }}</b> ?
-                            {% else %}
-                                {% set questionType = word.fromWord %}
-                                <b>{{ word.toTranslation }}</b> ?
-                            {% endif %}
-                        </p>
-                        <label for="question{{ loop.index }}">Réponse</label>
-                        <input type="text" id="question{{ loop.index }}" data-answer="{{ questionType }}"/>
-                        <p class="answer"></p>
-                        <p class="answerSentence"></p>
 
-                        {% if loop.index != words|length %}
-                            <button class="validateQuestionButton">Valider</button>
-                        {% else %}
-                            <button class="validateQuestionEnd">Valider</button>
-                            <button class="goToScore">Terminer</button>
-                        {% endif %}
-                    </div>
-                {% endfor %}
+            <div class="quizInnerContainer">
+                <div class="quizPlanet">
+                    <img src="{{ asset('images/planete.png') }}" alt="planète"/>
+                </div>
+                <div class="quiz">
+                    {% for word in words %}
+                        {% set questionType = '' %}
+
+                        <div class="question">
+                            <p class="questionNumber">Question {{ loop.index }} / {{ words|length }}</p>
+                            <p class="questionStatement">
+
+                                {% set randomQuestion = random(questions) %}
+                                {{ randomQuestion }}
+                                {% if randomQuestion == 'Que signifie ' %}
+                                    {% set questionType = word.toTranslation %}
+                                    <b>{{ word.fromWord }}</b> ?
+                                {% else %}
+                                    {% set questionType = word.fromWord %}
+                                    <b>{{ word.toTranslation }}</b> ?
+                                {% endif %}
+
+                            </p>
+                            <label for="question{{ loop.index }}">Réponse</label>
+                            <input type="text" id="question{{ loop.index }}" data-answer="{{ questionType }}"/>
+                            <p class="answerSentence"></p>
+                            <p class="answer"></p>
+
+                            {% if loop.index != words|length %}
+                                <button class="validateQuestionButton">Valider</button>
+                            {% else %}
+                                <button class="validateQuestionEnd">Valider</button>
+                                <button class="goToScore">Terminer</button>
+                            {% endif %}
+                        </div>
+
+                    {% endfor %}
+                </div>
+                <img class="endQuizShapeLeft" src="{{ asset('images/forme_bas-fin_quiz.png') }}" alt="forme"/>
+                <img class="endQuizShapeRight" src="{{ asset('images/forme_haut-fin_quiz.png') }}" alt="forme"/>
             </div>
         {% endif %}
 
         <div class="finalScore">
-            <p class="score" data-words-length="{{ words|length }}"><b></b> / {{ words|length }}</p>
+            <div class="divScore">
+                <p class="score" data-words-length="{{ words|length }}"><b></b> / {{ words|length }}</p>
+            </div>
             <p class="congrats"></p>
             <form action="{{ path('start_quiz') }}" method="post">
                 <input type="hidden" name="_quizList" class="hiddenInput" value="{{ list.id }}"/>
