@@ -19,6 +19,11 @@ h1
     outline: none;
 }
 
+.sr-only
+{
+    position: relative;
+}
+
 .planet
 {
     width: auto;
@@ -230,12 +235,14 @@ h1
     color: black;
     font-size: 20px;
     transition: all 0.3s ease-out;
+    align-items: center;
+    display: flex;
+    margin: 20px;
 }
 
-.backLink:hover
+.backLink > img
 {
-    color: #B63966;
-    transition: all 0.3s ease-out;
+    margin-right: 15px;
 }
 
 /* navbar */
@@ -440,7 +447,7 @@ h1
 }
 
 /* lists page */
-.listsContainer
+.listsContainer, .addListAddWord
 {
     background-color: white;
     border-radius: 40px;
@@ -448,6 +455,8 @@ h1
     margin: 50px 150px;
     height: 50vh;
     padding: 30px;
+    position: relative;
+    overflow: auto;
 }
 
 .listsContainer form ul
@@ -501,6 +510,7 @@ h1
 .listsContainer ul
 {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .listLabel
@@ -516,15 +526,16 @@ h1
     left: 10%;
 }
 
-.addListDiv
+.noWordNoListDiv
 {
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
 }
 
-.addListDiv > a
+.noWordNoListDiv > a
 {
     margin-top: 20px;
     position: relative;
@@ -539,20 +550,20 @@ h1
     transition: all 0.3s ease-out;
 }
 
-.addListDiv > a:hover
+.noWordNoListDiv > a:hover
 {
     opacity: 0.8;
     transition: all 0.3s ease-out;
 }
 
-.addListDiv > p
+.noWordNoListDiv > p
 {
     font-size: 1.8em;
     opacity: 0.35;
     width: 300px;
 }
 
-.addListDiv > a > img
+.noWordNoListDiv > a > img
 {
     position: absolute;
     top: 50%;
@@ -695,7 +706,7 @@ h1
     margin: 0;
 }
 
-.headerQuiz > a
+.headerQuiz > a, .addListAddWord > a
 {
     text-decoration: none;
     color: black;
@@ -709,7 +720,78 @@ h1
     padding: 50px;
 }
 
-.headerQuiz > a > img
+.headerQuiz > a > img, .addListAddWord > a > img
 {
     margin-right: 15px;
+}
+
+/* add list / add word */
+.addListAddWord > form
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.addListAddWord > form > label
+{
+    display: block;
+    font-size: 1.4em;
+}
+
+.addListAddWord > form > button
+{
+    display: block;
+    padding: 15px 0px;
+    border-radius: 40px;
+    border: 2px solid #707070;
+    width: 300px;
+    background-color: #707070;
+    color: white;
+    cursor: pointer;
+    font-family: Poppins, sans-serif;
+    font-size: 1.2em;
+}
+
+#words_list_name
+{
+    padding: 15px 0px;
+    border-radius: 40px;
+    border: 2px solid #707070;
+    width: 300px;
+    font-family: Poppins, sans-serif;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.addButtonCorner
+{
+    margin-top: 20px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    padding: 20px;
+    background-color: #E9BC27;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    display: inline-block;
+    opacity: 1;
+    transition: all 0.3s ease-out;
+}
+
+.addButtonCorner:hover
+{
+    opacity: 0.8;
+    transition: all 0.3s ease-out;
+}
+
+.addButtonCorner > img
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

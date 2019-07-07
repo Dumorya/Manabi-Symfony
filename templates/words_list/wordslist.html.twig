@@ -3,25 +3,35 @@
 {% block body %}
     {{ include('default/_navbar.html.twig') }}
 
-    <h1>Mes listes</h1>
+    <h1>Mes listes de mots</h1>
 
     <div class="listsContainer">
         {% if listNumber == 0 %}
-            <p>Vous n'avez pas encore de liste, ajoutez-en !</p>
+            <div class="noWordNoListDiv">
+                <p>Vous n'avez pas encore de liste, ajoutez-en !</p>
+                <a href="{{ path('new_list') }}"><img src="{{ asset('images/plus-symbol.png') }}" /></a>
+            </div>
 
-            <a href="{{ path('new_list') }}">Ajouter</a>
         {% else %}
-            <p>Voici vos listes</p>
-
             <ul>
                 {% for list in lists %}
-                    <li class="{{ list.notebookColor }}">
-                        <a href="{{ path('show_list', {'id': list.id}) }}">{{ list.name }}</a>
+                    <li>
+                        <a href="{{ path('show_list', {'id': list.id}) }}">
+                            {% if list.noteBookColor == 'redNotebook' %}
+                                <img src="{{ asset('images/notebook_red.png') }}"/>
+                            {% elseif list.noteBookColor == 'yellowNotebook' %}
+                                <img src="{{ asset('images/notebook_yellow.png') }}"/>
+                            {% else %}
+                                <img src="{{ asset('images/notebook_blue.png') }}"/>
+                            {% endif %}
+
+                            <span>{{ list.name }}</span>
+                        </a>
                     </li>
                 {% endfor %}
             </ul>
 
-            <a href="{{ path('new_list') }}">Ajouter</a>
+            <a class="addButtonCorner" href="{{ path('new_list') }}"><img src="{{ asset('images/plus-symbol.png') }}" /></a>
         {% endif %}
     </div>
 

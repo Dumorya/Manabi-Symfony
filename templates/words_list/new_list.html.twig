@@ -6,9 +6,12 @@
 
     {{ include('default/_navbar.html.twig') }}
 
-    <h1>Nouvelle liste</h1>
+    <h1>Créer une liste</h1>
 
-    {{ include('words_list/_form.html.twig') }}
+    <div class="addListAddWord">
+        <a href="{{ path('words_list') }}"><img src="{{ asset('images/back.png') }}" alt="retour"/>Retour</a>
+        {{ include('words_list/_form.html.twig') }}
+        <img class="flag" src="{{ asset('images/flag.png') }}" alt="flag"/>
+    </div>
 
-    <a href="{{ path('words_list') }}">Retour</a>
 {% endblock %}

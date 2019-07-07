@@ -33,11 +33,10 @@
 
         {% if words|length == 0 %}
             <img class="flag" src="{{ asset('images/flag.png') }}" alt="flag"/>
-            <div class="addListDiv">
+            <div class="noWordNoListDiv">
                 <p>Vous n'avez pas encore de mot, ajoutez-en !</p>
                 <a href="{{ path('add_words', {'id': list.id}) }}"><img src="{{ asset('images/plus-symbol.png') }}" /></a>
             </div>
-
         {% else %}
 
             <div class="quizInnerContainer">
