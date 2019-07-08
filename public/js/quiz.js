@@ -69,6 +69,10 @@ $(document).ready(function()
             $(this).parent().find('.validateQuestionButton, .validateQuestionEnd').removeClass('validateButtonDisabled');
             $(this).parent().find('.validateQuestionButton, .validateQuestionEnd').removeAttr("disabled");
         }
+        else
+        {
+            $('.validateQuestionButton, .validateQuestionEnd').prop('disabled','true').addClass('validateButtonDisabled');
+        }
     });
 
 

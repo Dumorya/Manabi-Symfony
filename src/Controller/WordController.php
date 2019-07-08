@@ -37,6 +37,7 @@ class WordController extends AbstractController
         }
 
         return $this->render('word/new_word.html.twig', [
+            'list' => $wordsList,
             'words' => $words,
             'form' => $form->createView(),
         ]);

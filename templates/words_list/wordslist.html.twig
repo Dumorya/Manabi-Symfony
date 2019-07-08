@@ -15,7 +15,7 @@
         {% else %}
             <ul>
                 {% for list in lists %}
-                    <li>
+                    <li class="flexColumn">
                         <a href="{{ path('show_list', {'id': list.id}) }}">
                             {% if list.noteBookColor == 'redNotebook' %}
                                 <img src="{{ asset('images/notebook_red.png') }}"/>

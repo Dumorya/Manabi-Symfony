@@ -251,7 +251,6 @@ h1
 {
     display: flex;
     align-items: flex-end;
-    margin-left: 20px;
     margin-bottom: 50px;
     background-image: url(../images/forme_nav.png);
     background-position: bottom;
@@ -453,7 +452,7 @@ h1
     border-radius: 40px;
     box-shadow: 23px 23px 26px -11px rgba(0,0,0,0.2);
     margin: 50px 150px;
-    height: 50vh;
+    height: 60vh;
     padding: 30px;
     position: relative;
     overflow: auto;
@@ -732,6 +731,7 @@ h1
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 10;
 }
 
 .addListAddWord > form > label
@@ -765,6 +765,32 @@ h1
     margin-bottom: 40px;
 }
 
+#word_from_word, #word_to_translation, #word_description
+{
+    padding: 15px 0px;
+    border-radius: 40px;
+    border: 2px solid #707070;
+    width: 500px;
+    font-family: Poppins, sans-serif;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    background-color: white;
+    transition: all 0.3s ease-out;
+}
+
+#word_description
+{
+    max-width: 500px;
+    min-height: 80px;
+}
+
+#word_save
+{
+    margin-right: auto;
+    margin-left: auto;
+    cursor: not-allowed;
+}
+
 .addButtonCorner
 {
     margin-top: 20px;
@@ -794,4 +820,135 @@ h1
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+/* wordslist */
+.flexColumn > a
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease-out;
+}
+
+.flexColumn > a:hover
+{
+    color: #B63966;
+    transition: all 0.3s ease-out;
+}
+
+.flexColumn
+{
+    list-style: none;
+}
+
+.buttonsGroup
+{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.paramButton
+{
+    margin-top: 20px;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: #35a5aa;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    display: inline-block;
+    opacity: 1;
+    transition: all 0.3s ease-out;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.paramButton:hover
+{
+    opacity: 0.8;
+    transition: all 0.3s ease-out;
+}
+
+.paramButton > img
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.editButton
+{
+    margin-top: 20px;
+    border-radius: 50%;
+    padding: 0px;
+    background-color: #bbc705;
+    width: 0px;
+    height: 0px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    display: block;
+    opacity: 1;
+    transition: all 0.3s ease-out;
+    position: relative;
+}
+
+.editButton > img,
+.deleteButton > img,
+.addButton > img
+{
+    width: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.buttonsGroup > form > .deleteButton
+{
+    margin-top: 20px;
+    border-radius: 50%;
+    padding: 0px;
+    background-color: #B63966;
+    width: 0px;
+    height: 0px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    display: block;
+    opacity: 1;
+    transition: all 0.3s ease-out;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.buttonsGroup > form > .deleteButton:hover,
+.editButton:hover,
+.addButton:hover
+{
+    opacity: 0.8;
+    transition: all 0.3s ease-out;
+}
+
+.addButton
+{
+    background-color: #E9BC27;
+    margin-top: 20px;
+    border-radius: 50%;
+    padding: 0px;
+    width: 0px;
+    height: 0px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    display: block;
+    opacity: 1;
+    transition: all 0.3s ease-out;
+    border: none;
+    cursor: pointer;
+    position: relative;
 }

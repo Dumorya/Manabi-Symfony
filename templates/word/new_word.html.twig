@@ -8,5 +8,14 @@
 
     <h1>Nouveau mot</h1>
 
-    {{ include('word/_form.html.twig') }}
+    <div class="addListAddWord">
+        <a href="{{ path('show_list', {'id': list.id}) }}"><img src="{{ asset('images/back.png') }}" alt="retour"/>Retour</a>
+        {{ include('word/_form.html.twig') }}
+        <img class="flag" src="{{ asset('images/flag.png') }}" alt="flag"/>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/addWord.js') }}"></script>
 {% endblock %}

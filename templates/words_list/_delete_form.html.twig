@@ -1,5 +1,10 @@
-<form method="post" action="{{ path('delete_list', {'id': list.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer la liste {{ list.name }} ?');">
+<form method="post" action="{{ path('delete_list', {'id': list.id}) }}">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ list.id) }}">
-    <button class="btn">Supprimer</button>
+
+    <div id="deleteModal" class="modal">
+        <p>Êtes-vous sûr(e) de vouloir supprimer la liste {{ list.name }} ?</p>
+    </div>
+    <a class="deleteButton" href="#deleteModal" rel="modal:open"><img src="{{ asset('images/rubbish-bin-delete-button.png') }}" /></a>
+{#    <button class="deleteButton"><img src="{{ asset('images/rubbish-bin-delete-button.png') }}" /></button>#}
 </form>

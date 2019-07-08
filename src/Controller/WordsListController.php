@@ -74,24 +74,13 @@ class WordsListController extends AbstractController
     }
 
     /**
-     * @Route("/list/{id}", name="show_list", methods={"GET"})
+     * @Route("/list/{id}", name="show_list", methods={"GET","POST"})
      */
-    public function show(WordsList $list): Response
+    public function show(Request $request, WordsList $list): Response
     {
         $repository = $this->getDoctrine()->getRepository(Word::class);
         $words = $repository->findByWordsListId($list->getId());
 
-        return $this->render('words_list/show_list.html.twig', [
-            'list' => $list,
-            'words' => $words,
-        ]);
-    }
-
-    /**
-     * @Route("/list/edit/{id}", name="edit_list", methods={"GET","POST"})
-     */
-    public function edit(Request $request, WordsList $list): Response
-    {
         $form = $this->createForm(WordsListType::class, $list);
         $form->handleRequest($request);
 
@@ -103,9 +92,10 @@ class WordsListController extends AbstractController
             ]);
         }
 
-        return $this->render('words_list/edit_list.html.twig', [
-            'list' => $list,
-            'form' => $form->createView(),
+        return $this->render('words_list/show_list.html.twig', [
+            'list'  => $list,
+            'words' => $words,
+            'form'  => $form->createView(),
         ]);
     }
 
