@@ -6,22 +6,32 @@
 
     {{ include('default/_navbar.html.twig') }}
 
-    <h1>Voir un mot</h1>
+    <div class="addListAddWord">
+        <a href="{{ path('show_list', {'id': word.wordsList.id}) }}"><img src="{{ asset('images/back.png') }}" alt="retour"/>Retour</a>
+        <div class="wordH1">
+            <h1>{{ word.fromWord }}</h1>
+        </div>
+        <div class="addWordForm">
+            <div>
+                <p>Traduction :</p>
+                <p>{{ word.toTranslation }}</p>
+            </div>
+            <div>
+                <p>Commentaire :</p>
+                {% if word.description == '' %}
+                    <em>Aucun commentaire</em>
+                {% else %}
+                    <p>{{ word.description }}</p>
+                {% endif %}
+            </div>
+            <a href="{{ path('edit_word', {'id': word.id}) }}">Modifier</a>
 
-    <div>
-        <p>Mot :</p>
-        <p>{{ word.fromWord }}</p>
-    </div>
-    <div>
-        <p>Traduction :</p>
-        <p>{{ word.toTranslation }}</p>
-    </div>
-    <div>
-        <p>Commentaire :</p>
-        <p>{{ word.description }}</p>
+        </div>
+        <img class="flag" src="{{ asset('images/flag.png') }}" alt="flag"/>
     </div>
 
-    <a href="{{ path('edit_word', {'id': word.id}) }}">Modifier</a>
-    {{ include('word/_delete_form.html.twig') }}
-    <a href="{{ path('show_list', {'id': word.wordsList.id}) }}">Retour</a>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/addListAddWord.js') }}"></script>
 {% endblock %}

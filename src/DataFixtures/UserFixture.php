@@ -17,11 +17,14 @@ class UserFixture extends Fixture
     public function load(ObjectManager $manager)
     {
         $user = new User();
-        $user->setFirstName("Clara");
-        $user->setLastName("Cassel");
-        $user->setEmail("clara.tiare@live.fr");
-        $user->setPassword($this->passwordEncoder->encodePassword($user, "nonoui"));
+        $user->setFirstName("Pierre");
+        $user->setLastName("Jéhan");
+        $user->setEmail("pierre@jehan.com");
+        $user->setPassword($this->passwordEncoder->encodePassword($user, "dev"));
         $user->setRoles(["ROLE_ADMIN"]);
+
+        $this->addReference("user-pierre", $user);
+
         $manager->persist($user);
         $manager->flush();
     }

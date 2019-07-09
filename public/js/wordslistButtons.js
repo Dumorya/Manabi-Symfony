@@ -13,13 +13,21 @@ $(document).ready(function()
         }
         else
         {
-            $('.editButton').css('width', '20px').css('height', '20px').css('padding', '10px');
+            $('.editButton, .addButton').css('width', '20px').css('height', '20px').css('padding', '10px');
             $('.deleteButton').css('width', '40px').css('height', '40px').css('padding', '10px');
-            $('.addButton').css('width', '20px').css('height', '20px').css('padding', '10px');
-
             $('.editButton > img, .deleteButton > img, .addButton > img').css('width', '20px').css('height', 'auto');
 
             displayed = true;
         }
+    });
+
+    $('form > .deleteButton').click(function(event)
+    {
+        event.preventDefault();
+        $('.deleteButtonModal').trigger('click');
+        $('.yesDeleteButton').click(function()
+        {
+            $('.deleteButton').parent().submit();
+        });
     });
 });

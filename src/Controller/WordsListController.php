@@ -87,7 +87,7 @@ class WordsListController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('words_list', [
+            return $this->redirectToRoute('show_list', [
                 'id' => $list->getId(),
             ]);
         }

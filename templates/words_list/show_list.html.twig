@@ -43,30 +43,43 @@
             </div>
 
         {% else %}
-            <table class="table">
-                <tbody>
-                <tr>
-                    <td></td>
-                    <td>Mot</td>
-                    <td>Traduction</td>
-                </tr>
-                {% set i = 1 %}
-                {% for word in words %}
+            <div class="wordsTables">
+                <table class="tableHeader">
+                    <tbody>
                     <tr>
-                        <td>
-                            <a href="{{ path('show_word', {'id': word.id}) }}">{{ i }} - </a>
-                        </td>
-                        <td>
-                            <a href="{{ path('show_word', {'id': word.id}) }}">{{ word.fromWord }} : </a>
-                        </td>
-                        <td>
-                            <a href="{{ path('show_word', {'id': word.id}) }}">{{ word.toTranslation }}</a>
-                        </td>
+                        <td>Mot</td>
                     </tr>
-                    {% set i = i+1 %}
-                {% endfor %}
-                </tbody>
-            </table>
+                    <tr>
+                        <td>Traduction</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="tableBody">
+                    <tbody>
+                        <tr>
+                            {% set i = 1 %}
+                            {% for word in words %}
+                                <td>
+                                    <a href="{{ path('show_word', {'id': word.id}) }}">
+                                        <p>{{ i }}</p>
+                                        <p>{{ word.fromWord }}</p>
+                                    </a>
+                                </td>
+                            {% set i = i+1 %}
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            {% set i = 1 %}
+                            {% for word in words %}
+                                <td>
+                                    <a href="{{ path('show_word', {'id': word.id}) }}">{{ word.toTranslation }}</a>
+                                </td>
+                                {% set i = i+1 %}
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         {% endif %}
 
         <div class="buttonsGroup">
@@ -76,9 +89,22 @@
             {% endif %}
 
             <div id="editModal" class="modal">
+                <h3>Modifier la liste</h3>
                 {{ include('words_list/_form.html.twig', {'button_label': 'Modifier'}) }}
             </div>
             <a class="editButton" href="#editModal" rel="modal:open"><img src="{{ asset('images/pencil-edit-button.png') }}" /></a>
+
+            <!-- Modale de suppression cachée et affichée au clic du bouton du formulaire -->
+            <div id="deleteModal" class="modal">
+                <h3>Supprimer la liste</h3>
+                <p>Êtes-vous sûr(e) de vouloir supprimer la liste <em>{{ list.name }}</em> ?</p>
+                <div>
+                    <button class="yesDeleteButton">Oui</button>
+                    <a href="#close-modal" rel="modal:close" class="noDeleteButton">Non</a>
+                </div>
+            </div>
+            <a class="deleteButtonModal" href="#deleteModal" rel="modal:open"><img src="{{ asset('images/rubbish-bin-delete-button.png') }}" /></a>
+            <!-- Fin modale -->
 
             {{ include('words_list/_delete_form.html.twig') }}
             <button class="paramButton"><img src="{{ asset('images/dots.png') }}" /></button>
@@ -89,4 +115,5 @@
 
 {% block javascripts %}
     <script src="{{ asset('js/wordslistButtons.js') }}"></script>
+    <script src="{{ asset('js/addListAddWord.js') }}"></script>
 {% endblock %}

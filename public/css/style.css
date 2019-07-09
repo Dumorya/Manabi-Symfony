@@ -86,13 +86,13 @@ h1
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
     opacity: 1;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .signInButton:hover
 {
     opacity: 0.8;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .signUpButton
@@ -101,13 +101,13 @@ h1
     color: #B63966;
     opacity: 1;
     text-decoration: none;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .signUpButton:hover
 {
     opacity: 0.8;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .loginForm
@@ -234,7 +234,7 @@ h1
     text-decoration: none;
     color: black;
     font-size: 20px;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
     align-items: center;
     display: flex;
     margin: 20px;
@@ -268,13 +268,13 @@ h1
     margin-right: 50px;
     font-size: 20px;
     color: black;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .navbar > ul > li > a:hover
 {
     color: #B63966;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .navbar > img
@@ -389,7 +389,7 @@ h1
     font-family: 'Poppins', sans-serif;
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
     box-shadow: 0 3px 6px rgba(0,0,0,0.2) ;
 }
 
@@ -403,7 +403,7 @@ h1
     color: #B63966;
     width: 300px;
     cursor: pointer;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .validateButtonDisabled, .startQuizDisabled
@@ -546,13 +546,13 @@ h1
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     display: inline-block;
     opacity: 1;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .noWordNoListDiv > a:hover
 {
     opacity: 0.8;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .noWordNoListDiv > p
@@ -699,7 +699,7 @@ h1
 
 .headerQuiz > h1
 {
-    position: absolute;
+    position: fixed;
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
@@ -712,6 +712,7 @@ h1
     font-size: 1.5em;
     align-items: center;
     display: flex;
+    position: fixed;
 }
 
 .quizInnerContainer
@@ -740,7 +741,8 @@ h1
     font-size: 1.4em;
 }
 
-.addListAddWord > form > button
+.addListAddWord > form > button,
+#editModal > form > button
 {
     display: block;
     padding: 15px 0px;
@@ -752,6 +754,25 @@ h1
     cursor: pointer;
     font-family: Poppins, sans-serif;
     font-size: 1.2em;
+}
+
+#editModal > form > div > label
+{
+    display: block;
+}
+
+#editModal > form > div
+{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 300px;
+}
+
+#editModal > h3,
+#deleteModal > h3
+{
+    text-align: center;
 }
 
 #words_list_name
@@ -775,7 +796,7 @@ h1
     font-size: 1.2em;
     margin-bottom: 20px;
     background-color: white;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 #word_description
@@ -791,10 +812,17 @@ h1
     cursor: not-allowed;
 }
 
+#words_list_save
+{
+    margin-right: auto;
+    margin-left: auto;
+    cursor: not-allowed;
+}
+
 .addButtonCorner
 {
     margin-top: 20px;
-    position: fixed;
+    position: absolute;
     bottom: 20px;
     right: 20px;
     border-radius: 50%;
@@ -805,13 +833,13 @@ h1
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     display: inline-block;
     opacity: 1;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .addButtonCorner:hover
 {
     opacity: 0.8;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .addButtonCorner > img
@@ -830,25 +858,26 @@ h1
     text-align: center;
     text-decoration: none;
     color: black;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .flexColumn > a:hover
 {
     color: #B63966;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .flexColumn
 {
     list-style: none;
+    margin-right: 30px;
 }
 
 .buttonsGroup
 {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
+    position: fixed;
+    bottom: 110px;
+    right: 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -865,7 +894,7 @@ h1
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     display: inline-block;
     opacity: 1;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
     border: none;
     cursor: pointer;
     position: relative;
@@ -874,7 +903,7 @@ h1
 .paramButton:hover
 {
     opacity: 0.8;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .paramButton > img
@@ -896,7 +925,7 @@ h1
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     display: block;
     opacity: 1;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
     position: relative;
 }
 
@@ -911,7 +940,7 @@ h1
     transform: translate(-50%, -50%);
 }
 
-.buttonsGroup > form > .deleteButton
+.deleteButton
 {
     margin-top: 20px;
     border-radius: 50%;
@@ -922,18 +951,20 @@ h1
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     display: block;
     opacity: 1;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
     border: none;
     cursor: pointer;
     position: relative;
 }
 
-.buttonsGroup > form > .deleteButton:hover,
+.deleteButton:hover,
 .editButton:hover,
-.addButton:hover
+.addButton:hover,
+.yesDeleteButton:hover,
+.noDeleteButton:hover
 {
     opacity: 0.8;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .addButton
@@ -947,8 +978,132 @@ h1
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     display: block;
     opacity: 1;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
     border: none;
     cursor: pointer;
     position: relative;
+}
+
+.deleteButtonModal
+{
+    display: none;
+}
+
+#deleteModal > div
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.yesDeleteButton, .noDeleteButton
+{
+    margin-top: 20px;
+    border-radius: 40px;
+    padding: 10px 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    display: inline-block;
+    opacity: 1;
+    transition: all 0.2s ease-out;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    width: fit-content;
+    font-size: 1.3em;
+}
+
+.yesDeleteButton
+{
+    background-color: #707070;
+}
+
+.noDeleteButton
+{
+    background-color: #B63966;
+}
+
+/* words tables */
+.wordsTables
+{
+    display: flex;
+    margin-top: 50px;
+}
+
+.tableHeader, .tableBody
+{
+    background-color: #ececec;
+    text-align: center;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.tableHeader
+{
+    border-radius: 40px 0 0 40px;
+}
+
+.tableBody
+{
+    border-radius: 0 40px 40px 0;
+}
+
+.tableHeader tr, .tableBody tr
+{
+    height: 180px;
+}
+
+.tableHeader tr:first-child td,
+.tableBody tr:first-child td
+{
+    border-bottom: 2px solid white;
+}
+
+.tableHeader td
+{
+    border-right: 2px solid white;
+}
+
+.tableBody td a, .tableBody td a p
+{
+    background-color: #ececec;
+    text-decoration: none !important;
+    color: black !important;
+    transition: all 0.2s ease-out;
+}
+
+.tableBody td a:hover, .tableBody td a:hover p
+{
+    background-color: #f8f8f8;
+    transition: all 0.2s ease-out;
+}
+
+.tableHeader td, .tableBody td
+{
+    padding: 0 30px;
+}
+
+/* show word */
+.addWordForm
+{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.addWordForm > div > p
+{
+    display: inline-block;
+}
+
+.wordH1 > h1
+{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    border: 2px solid #E9BC27;
+    border-radius: 29px;
+    width: fit-content;
+    padding: 5px 15px;
 }
