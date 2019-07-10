@@ -44,19 +44,9 @@ class WordController extends AbstractController
     }
 
     /**
-     * @Route("/word/show/{id}", name="show_word", methods={"GET"})
+     * @Route("/word/show/{id}", name="show_word", methods={"GET","POST"})
      */
-    public function show(Word $word): Response
-    {
-        return $this->render('word/show_word.html.twig', [
-            'word' => $word,
-        ]);
-    }
-
-    /**
-     * @Route("/word/edit_word/{id}", name="edit_word", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Word $word): Response
+    public function show(Request $request, Word $word): Response
     {
         $form = $this->createForm(WordType::class, $word);
         $form->handleRequest($request);
@@ -70,7 +60,7 @@ class WordController extends AbstractController
             ]);
         }
 
-        return $this->render('word/edit_word.html.twig', [
+        return $this->render('word/show_word.html.twig', [
             'word' => $word,
             'form' => $form->createView(),
         ]);

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap');
+
 /* login page */
 
 body
@@ -5,6 +7,7 @@ body
     overflow:hidden;
     background-color: #FAFAFA;
     font-family: 'Poppins', sans-serif;
+    font-weight: 300;
     margin: 0;
 }
 
@@ -590,6 +593,7 @@ h1
     left: 0;
     display: none;
 }
+
 .endQuizShapeRight
 {
     position: absolute;
@@ -735,14 +739,8 @@ h1
     z-index: 10;
 }
 
-.addListAddWord > form > label
-{
-    display: block;
-    font-size: 1.4em;
-}
-
-.addListAddWord > form > button,
-#editModal > form > button
+.addListAddWord > form button,
+#editModal > form button
 {
     display: block;
     padding: 15px 0px;
@@ -756,9 +754,17 @@ h1
     font-size: 1.2em;
 }
 
-#editModal > form > div > label
+#editModal > form label,
+.addListAddWord > form label
 {
     display: block;
+    font-size: 1.4em;
+}
+
+#editModal > form input,
+#editModal > form textarea
+{
+    max-width: 400px;
 }
 
 #editModal > form > div
@@ -766,7 +772,7 @@ h1
     display: block;
     margin-right: auto;
     margin-left: auto;
-    width: 300px;
+    width: 400px;
 }
 
 #editModal > h3,
@@ -822,9 +828,9 @@ h1
 .addButtonCorner
 {
     margin-top: 20px;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    position: fixed;
+    bottom: 100px;
+    right: 180px;
     border-radius: 50%;
     padding: 20px;
     background-color: #E9BC27;
@@ -931,7 +937,8 @@ h1
 
 .editButton > img,
 .deleteButton > img,
-.addButton > img
+.addButton > img,
+.editButtonCorner > img
 {
     width: 0px;
     position: absolute;
@@ -1084,16 +1091,17 @@ h1
 }
 
 /* show word */
-.addWordForm
+.showWordForm
 {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.addWordForm > div > p
+.showWordForm > div > p
 {
     display: inline-block;
+    font-size: 1.3em;
 }
 
 .wordH1 > h1
@@ -1106,4 +1114,146 @@ h1
     border-radius: 29px;
     width: fit-content;
     padding: 5px 15px;
+}
+
+.showWordForm > div > p:first-child
+{
+    font-weight: 600;
+}
+
+/* contact page */
+.contactContainer
+{
+    background: linear-gradient(to left, #ECDC02, #95B708);
+    border-radius: 40px;
+    box-shadow: 23px 23px 26px -11px rgba(0,0,0,0.2);
+    margin: 50px 250px;
+    height: 60vh;
+    padding: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.contactContainer > div
+{
+    width: 100%;
+}
+
+.contactContainer h1
+{
+    font-size: 2em;
+    color: white;
+    margin-left: 50px;
+}
+
+.contactContainer form input,
+.contactContainer form textarea,
+.contactContainer form button
+{
+    padding: 15px 10px;
+    border-radius: 40px;
+    border: none;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2) ;
+    width: 100%;
+    max-width: 450px;
+}
+
+.contactContainer form textarea
+{
+    height: 100px;
+    max-height: 100px;
+}
+
+.contactContainer form > #contact > div
+{
+    margin-bottom: 20px;
+}
+
+.contactContainer form > #contact button
+{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 200px;
+    background-color: #B63966;
+    color: white;
+    font-size: 1.3em;
+    cursor: pointer;
+    opacity: 1;
+    transition: all 0.2s ease-out;
+}
+
+.contactContainer form > #contact button:hover
+{
+    opacity: 0.8;
+    transition: all 0.2s ease-out;
+}
+
+.contactContainer form > #contact
+{
+    width: 100%;
+    max-width: 450px;
+}
+
+/* profile page */
+.profileContainer
+{
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 23px 23px 26px -11px rgba(0,0,0,0.2);
+    margin: 50px 150px;
+    height: 60vh;
+    padding: 30px;
+    position: relative;
+    overflow: auto;
+}
+
+.profileContainer img
+{
+    display: block;
+}
+
+.profileContainer > div > div > b,
+.profileContainer > div > div > p
+{
+    display: inline-block;
+    margin: 0;
+}
+
+.profileContainer > div
+{
+    width: 100%;
+    max-width: 400px;
+
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.profileContainer > div > div
+{
+    border-bottom: 1px solid #B63966;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.editButtonCorner
+{
+    margin-top: 20px;
+    position: fixed;
+    bottom: 100px;
+    right: 180px;
+    border-radius: 50%;
+    padding: 20px;
+    background-color: #bbc705;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    display: inline-block;
+    opacity: 1;
+    transition: all 0.2s ease-out;
 }

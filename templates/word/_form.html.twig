@@ -1,12 +1,14 @@
 {{ form_start(form) }}
-    {{ form_label(form.from_word, "Mot") }}
-    {{ form_widget(form.from_word) }}
+    <div>
+        {{ form_label(form.from_word, "Mot") }}
+        {{ form_widget(form.from_word) }}
 
-    {{ form_label(form.to_translation, "Traduction") }}
-    {{ form_widget(form.to_translation) }}
+        {{ form_label(form.to_translation, "Traduction") }}
+        {{ form_widget(form.to_translation) }}
 
-    {{ form_label(form.description, "Commentaire") }}
-    {{ form_widget(form.description) }}
+        {{ form_label(form.description, "Commentaire") }}
+        {{ form_widget(form.description) }}
 
-    {{ form_widget(form.save, { 'label': 'Valider' }) }}
+        {{ form_widget(form.save, { 'label': 'Valider' }) }}
+    </div>
 {{ form_end(form) }}

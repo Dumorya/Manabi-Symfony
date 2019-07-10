@@ -147,19 +147,19 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
 
         // german list
         $germanWords = array(
-            array('fréquent', 'häufig', ''),
-            array('conclusion', 'Abschluss', ''),
-            array('puissance', 'Macht', ''),
-            array('humain', 'Mensch', ''),
-            array('ouest', 'Westen', ''),
-            array('vitesse', 'Geschwindigkeit', ''),
-            array('maison', 'Haus', ''),
-            array('fleur', 'Blume', ''),
-            array('gourmand', 'gierig', ''),
-            array('carnaval', 'Karneval', ''),
-            array('oiseau', 'Vogel', ''),
-            array('vacances', 'Urlaub', ''),
-       );
+            array('häufig', 'fréquent', ''),
+            array('Abschluss', 'conclusion', ''),
+            array('Macht', 'puissance', ''),
+            array('Mensch', 'humain', ''),
+            array('Westen', 'ouest', ''),
+            array('Geschwindigkeit', 'vitesse', ''),
+            array('Haus', 'maison', ''),
+            array('Blume', 'fleur', ''),
+            array('gierig', 'gourmand', ''),
+            array('Karneval', 'carnaval', ''),
+            array('Vogel', 'oiseau', ''),
+            array('Urlaub', 'vacances', ''),
+        );
 
         $germanWordsList = new WordsList();
         $germanWordsList->setName('Allemand');
@@ -180,20 +180,21 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
 
         // portuguese list
         $portugueseWords = array(
-            array('cadeau d’anniversairet', 'presente de aniversário', ''),
-            array('merci', 'obrigado', ''),
-            array('ordinateur', 'computador', ''),
-            array('brouillard', 'nevoeiro', ''),
-            array('sauterelle', 'gafanhoto', ''),
-            array('ensuite', 'em seguida', ''),
-            array('rose', '-de-rosa', ''),
-            array('trèfle', 'trevo', ''),
-            array('église', 'igreja', ''),
-            array('nouveau', 'novo', ''),
-            array('médicament', 'droga', ''),
-            array('luxe', 'luxo', ''),
-            array('bicyclette', 'bicicleta', ''),
+            array('presente de aniversário', 'cadeau d’anniversairet', ''),
+            array('obrigado', 'merci', ''),
+            array('computador', 'ordinateur', ''),
+            array('nevoeiro', 'brouillard', ''),
+            array('gafanhoto', 'sauterelle', ''),
+            array('em seguida', 'ensuite', ''),
+            array('-de-rosa', 'rose', ''),
+            array('trevo', 'trèfle', ''),
+            array('igreja', 'église', ''),
+            array('novo', 'nouveau', ''),
+            array('droga', 'médicament', ''),
+            array('luxo', 'luxe', ''),
+            array('bicicleta', 'bicyclette', ''),
         );
+
 
         $portugueseWordsList = new WordsList();
         $portugueseWordsList->setName('Portugais');
@@ -214,16 +215,17 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
 
         // russian list
         $russianWords = array(
-            array('bonjour', 'привет', 'se prononce Priviet'),
-            array('merci', 'спасибо', 'se prononce Spasibo'),
-            array('Les amis', 'друзья', 'se prononce druz\'ya'),
-            array('toursites', 'туристы', 'se prononce turisty'),
-            array('vacances', 'праздник', 'se prononce prazdnik'),
-            array('métro', 'метро', 'se prononce metro'),
-            array('hommes', 'мужчины', 'se prononce muzhchiny'),
-            array('femmes', 'женщины', 'se prononce zhenshchiny'),
-            array('restaurant', 'ресторан', 'se prononce restoran'),
-        );
+            array('привет', 'bonjour', 'se prononce Priviet'),
+            array('спасибо', 'merci', 'se prononce Spasibo'),
+           array('друзья', 'les amis', 'se prononce druz\'ya'),
+           array('туристы', 'toursites', 'se prononce turisty'),
+           array('праздник', 'vacances', 'se prononce prazdnik'),
+           array('метро', 'métro', 'se prononce metro'),
+           array('мужчины', 'hommes', 'se prononce muzhchiny'),
+           array('женщины', 'femmes', 'se prononce zhenshchiny'),
+           array('ресторан', 'restaurant', 'se prononce restoran'),
+       );
+
 
         $russianWordsList = new WordsList();
         $russianWordsList->setName('Russe');
@@ -241,6 +243,42 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
         }
 
         $manager->persist($russianWordsList);
+
+        // tahitian list
+        $tahitianWords = array(
+            array('ia ora na', 'bonjour', ''),
+            array('mauruuru', 'merci', ''),
+            array('moana', 'océan', ''),
+            array('tupapau', 'fantôme', ''),
+            array('tane', 'homme', ''),
+            array('poti\'i', 'danseuse', ''),
+            array('purotu', 'belle femme', ''),
+            array('vahine', 'femme', ''),
+            array('va\'a', 'pirogue', ''),
+            array('pahua', 'bénitier', ''),
+            array('nehenehe', 'beau', ''),
+            array('manu', 'oiseau', ''),
+            array('here', 'amour', ''),
+            array('iti', 'petit', ''),
+            array('nui', 'grand', ''),
+        );
+
+        $tahitianWordsList = new WordsList();
+        $tahitianWordsList->setName('Tahitien');
+        $tahitianWordsList->setNoteBookColor('yellowNotebook');
+        $tahitianWordsList->setUser($this->getReference("user-pierre"));
+
+        for($i = 0 ; $i < count($tahitianWords) ; $i++)
+        {
+            $tahitianWord = new Word();
+            $tahitianWord->setFromWord($tahitianWords[$i][0]);
+            $tahitianWord->setToTranslation($tahitianWords[$i][1]);
+            $tahitianWord->setDescription($tahitianWords[$i][2]);
+            $tahitianWord->setWordsList($tahitianWordsList);
+            $manager->persist($tahitianWord);
+        }
+
+        $manager->persist($tahitianWordsList);
 
         $manager->flush();
     }

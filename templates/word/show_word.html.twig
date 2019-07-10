@@ -2,16 +2,30 @@
 
 {% block title %}Mon mot - {{ word.fromWord }}{% endblock %}
 
+{% block script %}
+    <script src="https://kit.fontawesome.com/97f34d6c2d.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+{% endblock %}
+
 {% block body %}
 
     {{ include('default/_navbar.html.twig') }}
+
+    <h1>Voir le mot</h1>
 
     <div class="addListAddWord">
         <a href="{{ path('show_list', {'id': word.wordsList.id}) }}"><img src="{{ asset('images/back.png') }}" alt="retour"/>Retour</a>
         <div class="wordH1">
             <h1>{{ word.fromWord }}</h1>
         </div>
-        <div class="addWordForm">
+        <div class="showWordForm">
             <div>
                 <p>Traduction :</p>
                 <p>{{ word.toTranslation }}</p>
@@ -24,14 +38,38 @@
                     <p>{{ word.description }}</p>
                 {% endif %}
             </div>
-            <a href="{{ path('edit_word', {'id': word.id}) }}">Modifier</a>
 
         </div>
         <img class="flag" src="{{ asset('images/flag.png') }}" alt="flag"/>
+
+        <div class="buttonsGroup">
+
+            <div id="editModal" class="modal">
+                <h3>Modifier le mot</h3>
+                {{ include('word/_form.html.twig', {'button_label': 'Modifier'}) }}
+            </div>
+            <a class="editButton" href="#editModal" rel="modal:open"><img src="{{ asset('images/pencil-edit-button.png') }}" /></a>
+
+            <!-- Delete modal hidden and showed on click on the form button -->
+            <div id="deleteModal" class="modal">
+                <h3>Supprimer le mot</h3>
+                <p>Êtes-vous sûr(e) de vouloir supprimer le mot <em>{{ word.fromWord }}</em> ?</p>
+                <div>
+                    <button class="yesDeleteButton">Oui</button>
+                    <a href="#close-modal" rel="modal:close" class="noDeleteButton">Non</a>
+                </div>
+            </div>
+            <a class="deleteButtonModal" href="#deleteModal" rel="modal:open"><img src="{{ asset('images/rubbish-bin-delete-button.png') }}" /></a>
+            <!-- Fin modale -->
+
+            {{ include('word/_delete_form.html.twig') }}
+            <button class="paramButton"><img src="{{ asset('images/dots.png') }}" /></button>
+        </div>
     </div>
 
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('js/wordslistButtons.js') }}"></script>
     <script src="{{ asset('js/addListAddWord.js') }}"></script>
 {% endblock %}

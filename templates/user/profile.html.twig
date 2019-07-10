@@ -4,11 +4,26 @@
     {{ include('default/_navbar.html.twig') }}
 
     <h1>Mon profil</h1>
+    <div class="profileContainer">
+        <div>
+            <div>
+                <b>Prénom</b>
+                <p>{{ user.firstName }}</p>
+            </div>
+            <div>
+                <b>Nom</b>
+                <p>{{ user.lastName }}</p>
+            </div>
+            <div>
+                <b>Adresse email</b>
+                <p>{{ user.email }}</p>
+            </div>
+        </div>
 
-    <p>{{ user.firstName }}</p>
-    <p>{{ user.lastName }}</p>
-    <p>{{ user.email }}</p>
+        <img class="endQuizShapeLeft" src="{{ asset('images/forme_bas-fin_quiz.png') }}" alt="forme"/>
+        <img class="endQuizShapeRight" src="{{ asset('images/forme_haut-fin_quiz.png') }}" alt="forme"/>
+        <a class="editButtonCorner" href="{{ path('edit_profile') }}"><img src="{{ asset('images/plus-symbol.png') }}" /></a>
+    </div>
 
-    <a href="{{ path('edit_profile') }}">Modifier</a>
 
 {% endblock %}

@@ -1,6 +1,8 @@
 {{ form_start(form) }}
-    {{ form_label(form.name, "Nom de la liste") }}
-    {{ form_widget(form.name) }}
+    <div>
+        {{ form_label(form.name, "Nom de la liste") }}
+        {{ form_widget(form.name) }}
+    </div>
 
     {{ form_widget(form.save, { 'label': 'Valider' }) }}
 {{ form_end(form) }}

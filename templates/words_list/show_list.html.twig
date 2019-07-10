@@ -9,7 +9,6 @@
 {% endblock %}
 
 {% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 {% endblock %}
@@ -94,7 +93,7 @@
             </div>
             <a class="editButton" href="#editModal" rel="modal:open"><img src="{{ asset('images/pencil-edit-button.png') }}" /></a>
 
-            <!-- Modale de suppression cachée et affichée au clic du bouton du formulaire -->
+            <!-- Delete modal hidden and showed on click on the form button -->
             <div id="deleteModal" class="modal">
                 <h3>Supprimer la liste</h3>
                 <p>Êtes-vous sûr(e) de vouloir supprimer la liste <em>{{ list.name }}</em> ?</p>
