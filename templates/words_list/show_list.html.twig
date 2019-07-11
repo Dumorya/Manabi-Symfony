@@ -58,7 +58,7 @@
                         <tr>
                             {% set i = 1 %}
                             {% for word in words %}
-                                <td>
+                                <td class="tdHover{{ i }}">
                                     <a href="{{ path('show_word', {'id': word.id}) }}">
                                         <p>{{ i }}</p>
                                         <p>{{ word.fromWord }}</p>
@@ -70,7 +70,7 @@
                         <tr>
                             {% set i = 1 %}
                             {% for word in words %}
-                                <td>
+                                <td class="tdHover{{ i }}">
                                     <a href="{{ path('show_word', {'id': word.id}) }}">{{ word.toTranslation }}</a>
                                 </td>
                                 {% set i = i+1 %}
@@ -113,6 +113,8 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('js/responsive.js') }}"></script>
     <script src="{{ asset('js/wordslistButtons.js') }}"></script>
     <script src="{{ asset('js/addListAddWord.js') }}"></script>
+    <script src="{{ asset('js/wordLink.js') }}"></script>
 {% endblock %}

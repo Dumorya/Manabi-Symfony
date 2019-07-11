@@ -19,6 +19,33 @@ $(document).ready(function()
         });
     });
 
+
+    // edit word
+    let editWordInputs = $('#editModal > form > div > input');
+    $('#editModal #word_save').prop('disabled','false');
+
+    // The input is alreadu filled so we check at the beginning without keyup
+    if(editWordInputs.val() !== '')
+    {
+        $('#editModal #word_save').css('background-color', '#B63966').css('border-color', '#B63966').css('cursor', 'pointer').removeAttr("disabled");
+    }
+    else
+    {
+        $('#editModal #word_save').css('background-color', '#707070').css('border-color', '#707070').prop('disabled','true').css('cursor', 'not-allowed');
+    }
+
+    editWordInputs.keyup(function()
+    {
+        if(editListInput.val() !== '')
+        {
+            $('#editModal #word_save').css('background-color', '#B63966').css('border-color', '#B63966').css('cursor', 'pointer').removeAttr("disabled");
+        }
+        else
+        {
+            $('#editModal #word_save').css('background-color', '#707070').css('border-color', '#707070').prop('disabled','true').css('cursor', 'not-allowed');
+        }
+    });
+
     // add list
     let addListInput = $('.addListAddWord > form > div > input');
     let saveButtonaddList = $('.addListAddWord > form > #words_list_save');

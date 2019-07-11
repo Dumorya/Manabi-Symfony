@@ -45,16 +45,16 @@ class RegistrationController extends AbstractController
                 ->setFrom('contact.manabi@gmail.com')
                 ->setTo($user->getEmail())
                 ->setBody('
-                    Bonjour toi ! 
-    
-                    Notre petite équipe qui a durement travaillé pour donner vie à ce projet est très heureuse de te compter parmi ses premiers utilisateurs Manabi ! :) 
+                    Bonjour bonjour ! 
+
+                    Notre petite équipe qui a durement travaillé pour donner vie à ce projet est très heureuse de vous compter parmi ses premiers utilisateurs Manabi ! :) 
+
+                    Votre inscription à l’adresse ' . $user->getEmail() . ' a bien été prise en compte et vous pourrez désormais vous organiser dans votre travail pour connaître différentes langues du bout des doigts !
                     
-                    Ton inscription à l’adresse ' . $user->getEmail() . ' a bien été prise en compte et tu pourras désormais t’organiser dans ton travail pour connaître différentes langues du bout des doigts ! 
+                    Rendez-vous au lien suivant : http://manabi.clara-cassel.fr pour commencer votre voyage linguistique !
                     
-                    Rendez-vous au lien suivant : http://manabi.clara-cassel.fr pour commencer ton voyage linguistique !
-                    
-                    A toi de jouer ! 
-                    
+                    A vous de jouer !
+ 
                     A très vite, 
                     L’équipe Manabi.
                 ')

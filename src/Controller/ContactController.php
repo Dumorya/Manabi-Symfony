@@ -17,15 +17,19 @@ class ContactController extends AbstractController
     {
         // get current user
         $user        = $this->getUser();
+        $firstNameMail    = '';
+        $lastNameMail    = '';
         $bodyMail    = '';
         $subjectMail = '';
         $addressMail = '';
 
         if ($request->getMethod() == Request::METHOD_POST)
         {
-            $bodyMail    = $request->request->get('contact')["message"];
-            $subjectMail = $request->request->get('contact')["subject"];
-            $addressMail = $request->request->get('contact')["from"];
+            $firstNameMail = $request->request->get('contact')["firstName"];
+            $lastNameMail  = $request->request->get('contact')["lastName"];
+            $bodyMail      = $request->request->get('contact')["message"];
+            $subjectMail   = $request->request->get('contact')["subject"];
+            $addressMail   = $request->request->get('contact')["from"];
         }
 
         $form = $this->createForm(ContactType::class);
@@ -37,27 +41,36 @@ class ContactController extends AbstractController
             $messageToContact = (new \Swift_Message())
                 ->setSubject($subjectMail)
                 ->setFrom($addressMail)
-                ->setTo('contact.manabi@gmail.com')
-                ->setBody($bodyMail);
+                ->setTo(['contact.manabi@gmail.com' => 'Contact Manabi'])
+                ->setBody('Adresse mail de l\'expéditeur : ' . $addressMail . '<br/>' .
+                    'Prénom et nom de l\'expéditeur : ' . $firstNameMail . ' ' . $lastNameMail . '<br/>' .
+                    $bodyMail,
+                    'text/html');
 
             $mailer->send($messageToContact);
 
             // send a confirmation email to the user to tell him/her that they contact us
             $messageToUser = (new \Swift_Message())
                 ->setSubject('Vous avez contacté Manabi')
-                ->setFrom('contact.manabi@gmail.com')
+                ->setFrom(['contact.manabi@gmail.com' => 'Contact Manabi'])
                 ->setTo($addressMail)
                 ->setBody('
-                    Bien le bonjour à toi,
-    
-                    Tu as récemment cherché à nous joindre via le formulaire de contact. Nous avons bien reçu ta demande et prendrons le temps de te répondre dans les plus brefs délais !
+                    Bien le bonjour,
+
+                    Vous avez récemment cherché à nous joindre via le formulaire de contact. Nous avons bien reçu votre demande et prendrons le temps de vous répondre dans les plus brefs délais !
                     
-                    Nous restons à ta disposition ;) 
+                    Nous restons à votre disposition ;) 
                     
                     L’équipe Manabi.
                 ');
 
             $mailer->send($messageToUser);
+
+            // empty the fields
+            $form = $this->createForm(ContactType::class);
+
+            // avoid resubmission after refresh
+            return $this->redirectToRoute('contact');
         }
 
         return $this->render('contact/contact.html.twig', [

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\RegistrationFormType;
+use App\Form\ProfileFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,6 +18,12 @@ class UserController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        //redirect user if he/she is logged in and wants to go on this page
+        if ($this->getUser())
+        {
+            return $this->redirectToRoute('homepage');
+        }
+
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
@@ -43,12 +49,11 @@ class UserController extends AbstractController
     public function edit(Request $request): Response
     {
         $user = $this->getUser();
-        $user->setEmail($user->getEmail());
-        $user->setPassword($user->getPassword());
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(ProfileFormType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid())
+        {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('show_profile');

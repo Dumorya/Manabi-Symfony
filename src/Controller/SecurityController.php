@@ -19,6 +19,12 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        //redirect user if he/she is logged in and wants to go on this page
+        if ($this->getUser())
+        {
+            return $this->redirectToRoute('homepage');
+        }
+
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
@@ -40,6 +46,12 @@ class SecurityController extends AbstractController
         TokenGeneratorInterface $tokenGenerator
     ): Response
     {
+        //redirect user if he/she is logged in and wants to go on this page
+        if ($this->getUser())
+        {
+            return $this->redirectToRoute('homepage');
+        }
+
         if ($request->isMethod('POST'))
         {
             $email = $request->request->get('email');
@@ -69,13 +81,13 @@ class SecurityController extends AbstractController
             $url = $this->generateUrl('app_reset_password', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
 
             $message = (new \Swift_Message('Mot de passe oublié'))
-                ->setFrom('contact.manabi@gmail.com')
+                ->setFrom(['contact.manabi@gmail.com' => 'Contact Manabi'])
                 ->setTo($user->getEmail())
                 ->setBody(
-                    "Bonjour toi !
-                     Il semblerait que tu aies oublié ton mot de passe. Pas de panique ! Clique sur ce lien pour le réinitialiser : <a href='". $url ."'>" . $url . "</a>" .
-                    "A bientôt,
-                    L'equipe Manabi.",
+                    "Bonjour bonjour ! <br/>
+                           Il semblerait que vous ayez oublié votre mot de passe. Pas de panique ! Cliquez sur ce lien pour le réinitialiser : <a href='". $url ."'>" . $url . "</a> <br/>" .
+                          "A bientôt, <br/>
+                           L'équipe Manabi.",
                     'text/html'
                 );
 
@@ -94,6 +106,11 @@ class SecurityController extends AbstractController
      */
     public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder)
     {
+        //redirect user if he/she is logged in and wants to go on this page
+        if ($this->getUser())
+        {
+            return $this->redirectToRoute('homepage');
+        }
 
         if ($request->isMethod('POST')) {
             $entityManager = $this->getDoctrine()->getManager();

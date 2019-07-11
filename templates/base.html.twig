@@ -14,8 +14,17 @@
 </head>
 <body>
 
-{% block body %}
+<div class="desktop">
+    {% block body %}
+    {% endblock %}
+</div>
+
+<div class="mobile">
+    <p>Manabi n'est pas encore disponible version mobile, rendez-vous sur un ordinateur pour en profiter pleinement ;)</p>
+</div>
+
+{% block javascripts %}
+    <script src="{{ asset('js/responsive.js') }}"></script>
 {% endblock %}
-{% block javascripts %}{% endblock %}
 </body>
 </html>

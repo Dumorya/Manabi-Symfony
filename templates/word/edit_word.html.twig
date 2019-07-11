@@ -12,3 +12,8 @@
 
     <a href="{{ path('show_word', {'id': word.id}) }}">Retour</a>
 {% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/responsive.js') }}"></script>
+    <script src="{{ asset('js/addListAddWord.js') }}"></script>
+{% endblock %}
