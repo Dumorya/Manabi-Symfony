@@ -1,33 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modification{% endblock %}
+{% block title %}Modifier mon profil{% endblock %}
 
 {% block body %}
 
     {{ include('default/_navbar.html.twig') }}
 
-
-    {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
-
     <h1>Modifier mon profil</h1>
     <div class="profileContainer">
+        <a href="{{ path('show_profile') }}"><img src="{{ asset('images/back.png') }}" alt="retour"/>Retour</a>
+
         <div>
-            <div>
-                <b>Prénom</b>
-                <p>{{ user.firstName }}</p>
-            </div>
-            <div>
-                <b>Nom</b>
-                <p>{{ user.lastName }}</p>
-            </div>
-            <div>
-                <b>Adresse email</b>
-                <p>{{ user.email }}</p>
-            </div>
+            {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
         </div>
 
         <img class="endQuizShapeLeft" src="{{ asset('images/forme_bas-fin_quiz.png') }}" alt="forme"/>
         <img class="endQuizShapeRight" src="{{ asset('images/forme_haut-fin_quiz.png') }}" alt="forme"/>
-        <a class="editButtonCorner" href="{{ path('show_profile') }}"><img src="{{ asset('images/plus-symbol.png') }}" /></a>
     </div>
 {% endblock %}

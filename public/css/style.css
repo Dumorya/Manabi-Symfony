@@ -64,24 +64,7 @@ h1
     text-align: center;
 }
 
-.signInButton
-{
-    padding: 15px 0;
-    border-radius: 40px;
-    cursor: pointer;
-    box-shadow: 0px 14px 26px -11px rgba(0,0,0,0.42);
-}
-
-.signInButton
-{
-    border: 2px solid #B63966;
-    background-color: #B63966;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-}
-
-.signInButton
+.signInButton, .sendRestPassword
 {
     border: 2px solid #B63966;
     background-color: #B63966;
@@ -90,15 +73,19 @@ h1
     font-size: 18px;
     opacity: 1;
     transition: all 0.2s ease-out;
+    padding: 15px 0;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0px 14px 26px -11px rgba(0,0,0,0.42);
 }
 
-.signInButton:hover
+.signInButton:hover, .sendRestPassword:hover
 {
     opacity: 0.8;
     transition: all 0.2s ease-out;
 }
 
-.signUpButton
+.signUpButton, .forgottenPassword
 {
     text-align: center;
     color: #B63966;
@@ -107,13 +94,20 @@ h1
     transition: all 0.2s ease-out;
 }
 
-.signUpButton:hover
+.signUpButton:hover, .forgottenPassword:hover
 {
     opacity: 0.8;
     transition: all 0.2s ease-out;
 }
 
-.loginForm
+.forgottenPassword
+{
+    margin-bottom: 20px;
+    display: block;
+    text-align: left;
+}
+
+.loginForm, .resetPasswordForm
 {
     width: 25%;
     border-radius: 40px;
@@ -128,32 +122,49 @@ h1
 }
 
 .firstForm > div,
-.firstForm > a
+.firstForm > a,
+.resetPasswordForm > div,
+.resetPasswordForm > a
 {
     display: block;
 }
 
 .firstForm > form > div > input,
-.firstForm > form > button
+.firstForm > form > button,
+.resetPasswordForm > form > div > input,
+.resetPasswordForm > form > button
 {
     width: 100%;
 }
 
-.firstForm > form
+.firstForm > form,
+.resetPasswordForm > form
 {
     padding: 0px 50px 30px 50px;
 }
 
-.firstForm > form > div > input
+.firstForm > form > div > input,
+.resetPasswordForm > form > div > input
 {
     padding: 15px 0px;
     border-radius: 40px;
     border: 1px solid #B63966;
 }
 
-.firstForm > form > div
+.firstForm > form > div,
+.resetPasswordForm > form > div
 {
     margin-bottom: 20px;
+}
+
+.resetPasswordForm h1
+{
+    margin: 0;
+}
+
+.resetPasswordForm > form > div
+{
+    margin: 30px 0;
 }
 
 @media screen and (max-width: 1265px)
@@ -167,7 +178,7 @@ h1
         transform: translate(-50%, 0);
     }
 
-    .loginForm
+    .loginForm, .resetPasswordForm
     {
         width: 50%;
     }
@@ -239,7 +250,7 @@ h1
     font-size: 20px;
     transition: all 0.2s ease-out;
     align-items: center;
-    display: flex;
+    display: flex !important;
     margin: 20px;
 }
 
@@ -937,8 +948,7 @@ h1
 
 .editButton > img,
 .deleteButton > img,
-.addButton > img,
-.editButtonCorner > img
+.addButton > img
 {
     width: 0px;
     position: absolute;
@@ -1225,7 +1235,7 @@ h1
 .profileContainer > div
 {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
 
     position: absolute;
     top: 50%; left: 50%;
@@ -1239,14 +1249,38 @@ h1
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    font-size: 1.4em;
+}
+
+.profileContainer form
+{
+    padding: 0px 50px 30px 50px;
+}
+
+.profileContainer form > div
+{
+    margin: 30px 0;
+}
+
+.profileContainer form > div > input
+{
+    padding: 15px 0px;
+    border-radius: 40px;
+    border: 1px solid #B63966;
+    width: 100%;
+}
+
+.profileContainer form > div > label
+{
+    display: block;
 }
 
 .editButtonCorner
 {
     margin-top: 20px;
-    position: fixed;
-    bottom: 100px;
-    right: 180px;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
     border-radius: 50%;
     padding: 20px;
     background-color: #bbc705;
@@ -1255,5 +1289,49 @@ h1
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     display: inline-block;
     opacity: 1;
+    transition: all 0.2s ease-out;
+}
+
+.editButtonCorner > img
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.profileContainer > a
+{
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+    align-items: center;
+    display: flex;
+}
+
+.profileContainer > a > img
+{
+    margin-right: 15px;
+}
+
+.editProfileButton
+{
+    border: 2px solid #B63966;
+    background-color: #B63966;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    opacity: 1;
+    transition: all 0.2s ease-out;
+    padding: 15px 0;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0px 14px 26px -11px rgba(0,0,0,0.42);
+    width: 100%;
+}
+
+.editProfileButton:hover
+{
+    opacity: 0.8;
     transition: all 0.2s ease-out;
 }

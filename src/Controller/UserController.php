@@ -30,7 +30,7 @@ class UserController extends AbstractController
      */
     public function profile()
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
 
         return $this->render('user/profile.html.twig', [
                 'user' => $user,
@@ -42,7 +42,7 @@ class UserController extends AbstractController
      */
     public function edit(Request $request): Response
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
         $user->setEmail($user->getEmail());
         $user->setPassword($user->getPassword());
         $form = $this->createForm(RegistrationFormType::class, $user);
